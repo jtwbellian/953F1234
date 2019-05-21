@@ -34,3 +34,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+FireTour/Assets/SuburbNeighborhoodHousePack/Scenes/NighttimeStreet/LightingData.asset
+FireTour/Assets/SuburbNeighborhoodHousePack/Scenes/DaytimeStreet/LightingData.asset

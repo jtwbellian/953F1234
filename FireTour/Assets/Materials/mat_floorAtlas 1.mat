@@ -61,8 +61,20 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _tex_alb:
+        m_Texture: {fileID: 2800000, guid: 18705852f37d9d7439718919e6376a0e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _tex_rgb:
+        m_Texture: {fileID: 2800000, guid: 7f10f6f63f499d34787949b775ee1b15, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _texc_norm:
+        m_Texture: {fileID: 2800000, guid: 0a9135088d7de3e458f51b0847c1b832, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _tileatlas:
-        m_Texture: {fileID: 2800000, guid: 9d67b2225ce422e41b18ac4c6fad736b, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:

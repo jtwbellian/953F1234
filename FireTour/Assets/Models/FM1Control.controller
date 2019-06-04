@@ -8,7 +8,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: ShakeHead
-  m_Speed: 5
+  m_Speed: 0.9
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -1666795903496774574}
@@ -21,7 +21,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 3322388292328786638, guid: 5e8f552a242d6554bae3ffdedcb928a6,
+  m_Motion: {fileID: -4586647743058674533, guid: 5e8f552a242d6554bae3ffdedcb928a6,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -70,8 +70,7 @@ AnimatorStateMachine:
     m_Position: {x: 400, y: 320, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
-  m_EntryTransitions:
-  - {fileID: 2389982321535047219}
+  m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
@@ -87,7 +86,13 @@ AnimatorController:
   m_PrefabAsset: {fileID: 0}
   m_Name: FM1Control
   serializedVersion: 5
-  m_AnimatorParameters: []
+  m_AnimatorParameters:
+  - m_Name: Begin
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -131,7 +136,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Shrug
-  m_Speed: 5
+  m_Speed: 0.8
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1203160867988778870}
@@ -144,27 +149,13 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1365611323276671097, guid: 5e8f552a242d6554bae3ffdedcb928a6,
+  m_Motion: {fileID: -1121882632513130676, guid: 5e8f552a242d6554bae3ffdedcb928a6,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1109 &2389982321535047219
-AnimatorTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions: []
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: -8926549316821351597}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 1
 --- !u!1102 &5547203734835607908
 AnimatorState:
   serializedVersion: 5
@@ -173,7 +164,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: IDLE
-  m_Speed: 6
+  m_Speed: 0.75
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 8731634069426232596}
@@ -186,7 +177,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 2876981554226286365, guid: 5e8f552a242d6554bae3ffdedcb928a6,
+  m_Motion: {fileID: -5252816984213320552, guid: 5e8f552a242d6554bae3ffdedcb928a6,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 

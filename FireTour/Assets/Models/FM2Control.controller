@@ -74,7 +74,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: shrug
-  m_Speed: 6
+  m_Speed: 0.9
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -7579251204988876143}
@@ -87,7 +87,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -371088798160956549, guid: 9bdd84973789631438c0c75707c8b4a7,
+  m_Motion: {fileID: 3094330708855449807, guid: 9bdd84973789631438c0c75707c8b4a7,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -114,8 +114,7 @@ AnimatorStateMachine:
     m_Position: {x: 610, y: 280, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
-  m_EntryTransitions:
-  - {fileID: 812046453805528866}
+  m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
@@ -137,7 +136,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -151,20 +150,6 @@ AnimatorController:
     m_IKPass: 0
     m_SyncedLayerAffectsTiming: 0
     m_Controller: {fileID: 9100000}
---- !u!1109 &812046453805528866
-AnimatorTransition:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  m_Conditions: []
-  m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 2411504835448161752}
-  m_Solo: 0
-  m_Mute: 0
-  m_IsExit: 0
-  serializedVersion: 1
 --- !u!1102 &2411504835448161752
 AnimatorState:
   serializedVersion: 5
@@ -173,7 +158,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Idle
-  m_Speed: 5
+  m_Speed: 0.8
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -8362868323521845918}
@@ -186,7 +171,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 1637092238785791823, guid: 9bdd84973789631438c0c75707c8b4a7,
+  m_Motion: {fileID: 7109952695463475303, guid: 9bdd84973789631438c0c75707c8b4a7,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -201,7 +186,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: shakehead
-  m_Speed: 5
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -7194752935687133380}
@@ -214,8 +199,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -1409346777223675292, guid: 9bdd84973789631438c0c75707c8b4a7,
-    type: 3}
+  m_Motion: {fileID: 194109189179468144, guid: 9bdd84973789631438c0c75707c8b4a7, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

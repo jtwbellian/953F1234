@@ -4,54 +4,20 @@ ModelImporter:
   serializedVersion: 25
   internalIDToNameTable:
   - first:
-      74: 2544505890812353396
-    second: Armature|Armature.001|Armature.001|Armature.001|mixamo.com|Layer0|Armatu
+      74: -1121882632513130676
+    second: sHRUG
   - first:
-      74: -3022918229237629067
-    second: Armature|Armature.001|Armature.001|Armature.002|mixamo.com|Layer0.001|Ar
+      74: -4586647743058674533
+    second: sHAKEheAD
   - first:
-      74: 993700241591848990
-    second: Armature|Armature.001|Armature.001|Armature.002|mixamo.com|Layer0|Armatu
+      74: -5252816984213320552
+    second: idle
+  externalObjects:
   - first:
-      74: 3355692464254882077
-    second: Armature|Armature.001|Armature.001|Armature.003|mixamo.com|Layer0|Armatu
-  - first:
-      74: 642864423280859186
-    second: Armature|Armature.001|Armature.001|IDLE2|Armature.001|IDLE2
-  - first:
-      74: -8844839601131700017
-    second: Armature|Armature.001|Armature.001|SHAKENO|Armature.001|SHAKENO
-  - first:
-      74: 643524547151914436
-    second: Armature|Armature.001|Armature.001|SHRUG.001|Armature.001|SHRUG.001
-  - first:
-      74: 8146309059850877042
-    second: Armature|Armature.001|Armature.001|SHRUG|Armature.001|SHRUG
-  - first:
-      74: 1106387751351557798
-    second: Armature|Armature|Armature|Armature.002|mixamo.com|Layer0.001|Armature|A
-  - first:
-      74: -5910008335822160069
-    second: Armature|Armature|Armature|Armature.002|mixamo.com|Layer0|Armature|Armat
-  - first:
-      74: 7498258578455678907
-    second: Armature|Armature|Armature|Armature.003|mixamo.com|Layer0|Armature|Armat
-  - first:
-      74: -8774488902895635490
-    second: Armature|Armature|Armature|SHAKENO|Armature|SHAKENO
-  - first:
-      74: -7154252641886275738
-    second: Armature|Armature|Armature|SHRUG.001|Armature|SHRUG.001
-  - first:
-      74: 2876981554226286365
-    second: Armature|IDLE
-  - first:
-      74: 3322388292328786638
-    second: Armature|ShakeHead
-  - first:
-      74: 1365611323276671097
-    second: Armature|Shrug
-  externalObjects: {}
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: No Name
+    second: {fileID: 2100000, guid: 177fa1ea2beb3a946a956aac681fffee, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -80,11 +46,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Armature|Armature.001|Armature.001|Armature.001|mixamo.com|Layer0|Armatu
-      takeName: Armature|Armature.001|Armature.001|Armature.001|mixamo.com|Layer0|Armatu
-      internalID: 2544505890812353396
+      name: sHRUG
+      takeName: sHRUG
+      internalID: -1121882632513130676
       firstFrame: 0
-      lastFrame: 1
+      lastFrame: 175
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -109,386 +75,9 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Armature.001|Armature.001|Armature.002|mixamo.com|Layer0.001|Ar
-      takeName: Armature|Armature.001|Armature.001|Armature.002|mixamo.com|Layer0.001|Ar
-      internalID: -3022918229237629067
-      firstFrame: 0
-      lastFrame: 1
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Armature.001|Armature.001|Armature.002|mixamo.com|Layer0|Armatu
-      takeName: Armature|Armature.001|Armature.001|Armature.002|mixamo.com|Layer0|Armatu
-      internalID: 993700241591848990
-      firstFrame: 0
-      lastFrame: 1
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Armature.001|Armature.001|Armature.003|mixamo.com|Layer0|Armatu
-      takeName: Armature|Armature.001|Armature.001|Armature.003|mixamo.com|Layer0|Armatu
-      internalID: 3355692464254882077
-      firstFrame: 0
-      lastFrame: 2
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Armature.001|Armature.001|IDLE2|Armature.001|IDLE2
-      takeName: Armature|Armature.001|Armature.001|IDLE2|Armature.001|IDLE2
-      internalID: 642864423280859186
-      firstFrame: 0
-      lastFrame: 2
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Armature.001|Armature.001|SHAKENO|Armature.001|SHAKENO
-      takeName: Armature|Armature.001|Armature.001|SHAKENO|Armature.001|SHAKENO
-      internalID: -8844839601131700017
-      firstFrame: 0
-      lastFrame: 3
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Armature.001|Armature.001|SHRUG.001|Armature.001|SHRUG.001
-      takeName: Armature|Armature.001|Armature.001|SHRUG.001|Armature.001|SHRUG.001
-      internalID: 643524547151914436
-      firstFrame: 0
-      lastFrame: 2
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Armature.001|Armature.001|SHRUG|Armature.001|SHRUG
-      takeName: Armature|Armature.001|Armature.001|SHRUG|Armature.001|SHRUG
-      internalID: 8146309059850877042
-      firstFrame: 0
-      lastFrame: 2
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Armature|Armature|Armature.002|mixamo.com|Layer0.001|Armature|A
-      takeName: Armature|Armature|Armature|Armature.002|mixamo.com|Layer0.001|Armature|A
-      internalID: 1106387751351557798
-      firstFrame: 0
-      lastFrame: 1
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Armature|Armature|Armature.002|mixamo.com|Layer0|Armature|Armat
-      takeName: Armature|Armature|Armature|Armature.002|mixamo.com|Layer0|Armature|Armat
-      internalID: -5910008335822160069
-      firstFrame: 0
-      lastFrame: 2
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Armature|Armature|Armature.003|mixamo.com|Layer0|Armature|Armat
-      takeName: Armature|Armature|Armature|Armature.003|mixamo.com|Layer0|Armature|Armat
-      internalID: 7498258578455678907
-      firstFrame: 0
-      lastFrame: 4
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Armature|Armature|SHAKENO|Armature|SHAKENO
-      takeName: Armature|Armature|Armature|SHAKENO|Armature|SHAKENO
-      internalID: -8774488902895635490
-      firstFrame: 0
-      lastFrame: 1
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|Armature|Armature|SHRUG.001|Armature|SHRUG.001
-      takeName: Armature|Armature|Armature|SHRUG.001|Armature|SHRUG.001
-      internalID: -7154252641886275738
-      firstFrame: 0
-      lastFrame: 1
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|IDLE
-      takeName: Armature|IDLE
-      internalID: 2876981554226286365
-      firstFrame: 0
-      lastFrame: 418
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 0
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
-    - serializedVersion: 16
-      name: Armature|ShakeHead
-      takeName: Armature|ShakeHead
-      internalID: 3322388292328786638
+      name: sHAKEheAD
+      takeName: sHAKEheAD
+      internalID: -4586647743058674533
       firstFrame: 0
       lastFrame: 92
       wrapMode: 0
@@ -515,11 +104,11 @@ ModelImporter:
       maskSource: {instanceID: 0}
       additiveReferencePoseFrame: 0
     - serializedVersion: 16
-      name: Armature|Shrug
-      takeName: Armature|Shrug
-      internalID: 1365611323276671097
+      name: idle
+      takeName: idle
+      internalID: -5252816984213320552
       firstFrame: 0
-      lastFrame: 175
+      lastFrame: 418
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -545,7 +134,10 @@ ModelImporter:
       additiveReferencePoseFrame: 0
     isReadable: 0
   meshes:
-    lODScreenPercentages: []
+    lODScreenPercentages:
+    - 0.25
+    - 0.125
+    - 0.01
     globalScale: 1
     meshCompression: 0
     addColliders: 0

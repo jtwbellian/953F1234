@@ -7,7 +7,9 @@ public class NPCHeadLook : MonoBehaviour
     public GameObject target;
     private Animator myAnimator;
     private bool lineOfSight;
-  
+    private float targetNoticeDistance;
+    private float targetRealDistance; 
+
     void Start()
     {
         SetInitialReferences(); 
@@ -18,16 +20,27 @@ public class NPCHeadLook : MonoBehaviour
         myAnimator = GetComponent<Animator>();
     }
 
-    private void OnTriggerEnter(Collider other)
+    void OnTriggerEnter(Collider other)
     {
-        if (lineOfSight == false)
-            lineOfSight = true;
+        if (other.transform.root.tag == "Player")
+        {
+            if (target != null)
+            {
+                targetNoticeDistance = Vector3.Distance(other.transform.position, transform.position);
+            }
+            if (lineOfSight == false)
+                lineOfSight = true;
+        }
+
     }
 
-    private void OnTriggerExit(Collider other)
+    void OnTriggerExit(Collider other)
     {
-        if (lineOfSight == true)
-            lineOfSight = false;
+        if (other.transform.root.tag == "Player")
+        {
+            if (lineOfSight == true)
+                lineOfSight = false;
+        }
     }
 
     void OnAnimatorIK()
@@ -36,8 +49,10 @@ public class NPCHeadLook : MonoBehaviour
         {
             if (lineOfSight == true && target!=null)
             {
-                myAnimator.SetLookAtWeight(1, 0, 0.5f, 0, 0.7f);
+                targetRealDistance = Vector3.Distance(target.transform.position, transform.position);
+                myAnimator.SetLookAtWeight(1f, 0, 1f - (targetRealDistance / targetNoticeDistance)/1.4f, 0, 0.7f);
                 myAnimator.SetLookAtPosition(target.transform.position);
+                Debug.Log((targetRealDistance/targetNoticeDistance).ToString());
             }
             else
             {

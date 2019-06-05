@@ -1418,7 +1418,8 @@ GameObject:
   - component: {fileID: 370214957030544950}
   - component: {fileID: 7195302900007513480}
   - component: {fileID: 3374308301486651207}
-  - component: {fileID: 8938355951530669349}
+  - component: {fileID: 8310065121044049614}
+  - component: {fileID: 4195170004187387693}
   m_Layer: 0
   m_Name: Fireman_2
   m_TagString: Untagged
@@ -1502,8 +1503,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee22e894508e4ce4aba9abafb7122dbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!65 &8938355951530669349
-BoxCollider:
+--- !u!114 &8310065121044049614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6769506810858948959}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cc1151e9012fb1478a59ecdd5af1736, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+--- !u!136 &4195170004187387693
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1512,9 +1526,10 @@ BoxCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.3590382, y: 1.2307281, z: 1.012277}
-  m_Center: {x: 0.0026661127, y: 0.6886883, z: 0.67188156}
+  m_Radius: 2.4987228
+  m_Height: 5.1850123
+  m_Direction: 1
+  m_Center: {x: 0.06862068, y: 0.76312923, z: 0.46443367}
 --- !u!1 &6820978108353636806
 GameObject:
   m_ObjectHideFlags: 0

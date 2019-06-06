@@ -2,37 +2,27 @@
 
 public class TriggerEvent : MonoBehaviour
 {
-    private GameObject target;
-    public string targetName;
+    public GameObject target;
+    public bool persistAfterDeparture;
 
-    void OnTriggerStay(Collider Other)
+    void OnTriggerEnter(Collider Other)
     {
-        if (Other.gameObject.tag == "Player")
+        if (Other.gameObject.transform.root.tag == "Player")
         {
-            if (transform.Find(targetName).gameObject != null)
+            if (target != null && target.activeSelf==false)
             {
-                target = transform.Find(targetName).gameObject;
-
-                if (target.activeSelf == false)
-                {
-                    target.gameObject.SetActive(true);
-                }
+                target.gameObject.SetActive(true);
             }
 
         }
     }
     private void OnTriggerExit(Collider Other)
     {
-        if (Other.gameObject.tag == "Player")
+        if (Other.gameObject.transform.root.tag == "Player")
         {
-            if (transform.Find(targetName).gameObject != null)
-            {
-                target = transform.Find(targetName).gameObject;
-
-                if (target.activeSelf == true)
-                {
+            if (target != null && target.activeSelf==true && persistAfterDeparture==false)
+            { 
                     target.gameObject.SetActive(false);
-                }
             }
         }
     }

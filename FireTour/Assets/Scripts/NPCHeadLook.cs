@@ -52,7 +52,7 @@ public class NPCHeadLook : MonoBehaviour
                 targetRealDistance = Vector3.Distance(target.transform.position, transform.position);
                 myAnimator.SetLookAtWeight(1f, 0, 1f - (targetRealDistance / targetNoticeDistance)/1.4f, 0, 0.7f);
                 myAnimator.SetLookAtPosition(target.transform.position);
-                Debug.Log((targetRealDistance/targetNoticeDistance).ToString());
+                //Debug.Log((targetRealDistance/targetNoticeDistance).ToString());
             }
             else
             {

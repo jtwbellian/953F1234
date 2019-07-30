@@ -50,14 +50,22 @@ public class FireManager : MonoBehaviour
 
     public void AddProbe(FireProbe p)
     {
-        probeUpdate += p.Refresh;
+        probeUpdate += p.Grow;
         probes.Add(p);
     }
 
     public void RemoveProbe(FireProbe p)
     {
-        probeUpdate -= p.Refresh;
+        probeUpdate -= p.Grow;
         probes.Remove(p);
+    }
+     [ContextMenu("Put Out")]
+    public void PutOut()
+    {
+        foreach( FireProbe f in probes)
+        {
+            f.TurnOff();
+        }
     }
 
     IEnumerator SpreadFire()

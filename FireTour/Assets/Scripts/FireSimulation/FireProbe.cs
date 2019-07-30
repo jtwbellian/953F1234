@@ -59,7 +59,7 @@ public class FireProbe : MonoBehaviour
         fm.AddProbe(this);
         StartCoroutine("Burn");
     }
-
+     [ContextMenu("Extinguish")]
     public void TurnOff()
     {
         lit = false;
@@ -68,7 +68,7 @@ public class FireProbe : MonoBehaviour
     }
 
     // Refresh
-    public void Refresh()
+    public void Grow()
     {
         if (trigger.radius < MAX_RADIUS)
             trigger.radius = trigger.radius * growRate;

@@ -1,0 +1,60 @@
+#bob{
+    background-color: #ccf000;
+    margin-left: 15px;
+}
+
+#container{
+    flex-direction: row;
+}
+
+#header-description{
+    color: #ffffff;
+    font-size: 20px;
+    flex:3;
+}
+
+#description-container{
+    background-color: #eb4748;
+    align-content: center;
+    align-items: center;
+    flex: 3;
+}
+
+#generateButtons{
+    flex-direction: column;
+    flex: 2;
+    margin-top: 0px;
+}
+
+#quickstartButton{
+    flex:1;
+    -unity-background-image-tint-color: #eb4748; 
+    border-width: 2px;
+    border-color: #343A40;
+    margin: 0px;
+}
+
+#quickContainer{
+    flex-direction: row;
+}
+
+#bottom-box{
+    margin-top: 10px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+.generateButton{
+    /* border-radius: 200px; */
+    -unity-background-image-tint-color: #2BAAE1;
+    border-width: 2px;
+    border-color: #343A40;
+    margin: 0px;
+}
+
+.yolo{
+    padding-bottom: 100px;
+    background-image: url("binariLogo.png");
+    flex: auto;
+}
+

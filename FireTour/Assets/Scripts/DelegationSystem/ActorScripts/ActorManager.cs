@@ -1,4 +1,4 @@
-using System.Collections;
+using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
@@ -7,7 +7,7 @@ using System.Linq;
 /// The ActorManager is responsible for understanding what it's
 /// actors are doing.  Being idle and what not.
 /// </summary>
-public class ActorManager : MonoBehaviour
+public class ActorManager : SerializedMonoBehaviour
 {
     // Every other manager will have reference to the delegation manager.
     // Looks like the delegation manager only needs to be referenced by the actor manager
@@ -35,7 +35,6 @@ public class ActorManager : MonoBehaviour
         delMngr = GameObject.FindObjectOfType<DelegationManager>();
         foreach(var actor in GameObject.FindObjectsOfType<DelegationActor>()){
             registerActor(actor);
-            registerIdleActor(actor);
         }
     }
 

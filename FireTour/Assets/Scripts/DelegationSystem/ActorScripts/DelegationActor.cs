@@ -10,10 +10,9 @@ using UnityEngine;
 /// </summary>
 public class DelegationActor : MonoBehaviour
 {
-    DelegationManager delMnger;
-    ActorManager actorMnger;
+    public DelegationManager delMnger;
+    public ActorManager actorMnger;
     public string actorName;
-    [HideInInspector]
     public int uid; // uid = Unique Identifier
     public GameObject assignedLocation;
     public GameObject assignedAction;
@@ -38,7 +37,7 @@ public class DelegationActor : MonoBehaviour
     public int isReady(){
         int ready = 0;
         ready += isAssignedAction() ? 1 : 0;
-        ready += isAssignedLocation() ? 1: 0;
+        ready += isAssignedLocation() ? 1 : 0;
         return ready;
     }
 
@@ -52,15 +51,14 @@ public class DelegationActor : MonoBehaviour
 
 
     public bool isAssignedLocation(){
-        if(this.assignedLocation is null){
+        if(this.assignedLocation == null){
             return false;
         }
-
         return true;
     }
 
     public bool isAssignedAction(){
-        if(this.assignedAction is null){
+        if(this.assignedAction == null){
             return false;
         }
         return true;

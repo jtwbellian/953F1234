@@ -18,14 +18,18 @@ using UnityEngine;
 /// </summary>
 public class InputManager : MonoBehaviour
 {
-    // Drag and drop the delegation manager.  I don't wanna keep using findgameobject since
-    // it increases load time.
-    public DelegationManager delegationManager;
+
     private static InputManager _instance;
     public static InputManager Instance { get { return _instance; } }
 
+    // Drag and drop the delegation manager.  I don't wanna keep using findgameobject since
+    // it increases load time.
+    public DelegationManager delegationManager;
+
+    public GameObject selectedTarget;
     public delegate void Selection(GameObject obj);
     public event Selection OnButtonDownSelection;
+
 
     private void Awake(){
         if (_instance != null && _instance != this)
@@ -36,13 +40,13 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    void start(){
+    void Start(){
         // subscribed the delegation selection to be based on when this input manager selects
         // something.
         OnButtonDownSelection += delegationManager.Selection;
     }
 
-    void update(){
+    void Update(){
         CheckForControllerEvents();
     }
 
@@ -61,6 +65,7 @@ public class InputManager : MonoBehaviour
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit, 100.0f)) {
+                selectedTarget = hit.collider.gameObject;
                 OnButtonDownSelection(hit.collider.gameObject);
                 Debug.Log("You selected the " + hit.transform.name);
             }

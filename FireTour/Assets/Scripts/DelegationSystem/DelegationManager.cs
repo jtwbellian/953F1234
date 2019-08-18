@@ -36,9 +36,10 @@ public class DelegationManager : MonoBehaviour
     /// </summary>
     /// <param name="target"></param>
     public void Selection(GameObject target){
+        Debug.Log("Selection made for delegation system.");
         switch(target.tag){
 
-            case "untagged":
+            case "Untagged":
                     if(assigneeId == -1){
                         Debug.Log("Character select menu!");
                         // this.newAssignee = characterSelectMenuWhenAvailable();
@@ -86,6 +87,7 @@ public class DelegationManager : MonoBehaviour
     /// </summary>
     private void assigneePerforms(){
         Debug.Log($"Assignee with uid of {this.assigneeId} begins work.");
+        // This will throw errors if actions have not been assigned!
         this.actorManager.actorMap[this.assigneeId].beginPerformance();
         this.assigneeId = -1;
     }

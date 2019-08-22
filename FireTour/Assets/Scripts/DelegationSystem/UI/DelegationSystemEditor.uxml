@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UXML
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="UnityEngine.UIElements"
+    xsi:noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd"
+    xsi:schemaLocation="UnityEngine.UIElements ../UIElementsSchema/UnityEngine.UIElements.xsd">
+    <Template path="Assets/Scripts/DelegationSystem/UI/Header.uxml" name="Header"/>
+    <Instance template="Header"/>
+    <VisualElement name="quickContainer">
+        <Button name="quickstartButton" text="Quickstart"/>
+        <VisualElement name="generateButtons">
+            <Button class="generateButton" name="generateActor" text="Generate Actor"/>
+            <Button class="generateButton" name="generateLocation" text="Generate Location"/>
+            <Button class="generateButton" name="generateAction" text="Generate Action"/>
+        </VisualElement>
+    </VisualElement>
+
+
+</UXML>

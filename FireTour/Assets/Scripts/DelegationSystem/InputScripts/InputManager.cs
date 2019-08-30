@@ -72,5 +72,8 @@ public class InputManager : MonoBehaviour
         }
         // ============= Debug input and Example input!! =====================
 
+        // Oculus VR Basic Inputs
+
+
     }
 }

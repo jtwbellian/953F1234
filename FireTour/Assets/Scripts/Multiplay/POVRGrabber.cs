@@ -5,6 +5,11 @@ using UnityEngine;
 public class POVRGrabber : OVRGrabber
 {
 
+    public void SetParentTransform(Transform t)
+    {
+        m_parentTransform = t;
+    }
+
     protected override void OffhandGrabbed(OVRGrabbable grabbable)
     {
         base.OffhandGrabbed(grabbable);

@@ -22,23 +22,23 @@ public class PhotonPlayer : MonoBehaviour
 
         if (PV.IsMine)
         {
-            if (PhotonNetwork.IsMasterClient) // Player 1
-            {
-                myAvatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar1"),
-                                                    Vector3.zero, 
-                                                    Quaternion.identity, 0);
-            }
-            else // Player 2
-            {
-                    myAvatar = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PlayerAvatar2"),
-                                        Vector3.zero, 
-                                        Quaternion.identity, 0);
-            }
-            
-            GameObject obj = Resources.Load<GameObject>("PhotonPrefabs/OVRPlayerController");
+            var handL = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "CustomHandLeft"),
+                                                Vector3.zero, 
+                                                Quaternion.identity, 0);
+            var handR = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "CustomHandRight"),
+                                    Vector3.zero, 
+                                    Quaternion.identity, 0);
 
+
+            GameObject obj = Resources.Load<GameObject>("PhotonPrefabs/OVRPlayerController");
             var player = Instantiate(obj);
 
+            POVRGrabber grabberL = handL.GetComponent<POVRGrabber>();
+            POVRGrabber grabberR = handR.GetComponent<POVRGrabber>();
+
+            grabberL.SetParentTransform(player.transform);
+            grabberR.SetParentTransform(player.transform);
+/*
             parts = myAvatar.GetComponent<AvatarParts>();
             avController = player.GetComponent<AvatarController>();
 
@@ -55,6 +55,7 @@ public class PhotonPlayer : MonoBehaviour
             parts.LHand.SetParent(avController.lhandTarget.transform);
             parts.LHand.localRotation = Quaternion.identity;
             parts.LHand.localPosition = Vector3.zero;
+            */
         }
     }
 }

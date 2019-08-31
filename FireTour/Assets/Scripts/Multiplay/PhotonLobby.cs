@@ -23,11 +23,12 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     private int maxPlayers = 2;
     private int attempt = 0; // attempts to create room, appended to new room
 
-private void Awake() {
+    private void Awake() 
     {
-        lobby = this; // quick singleton implementation
+        {
+            lobby = this; // quick singleton implementation
+        }
     }
-}
 
     // Start is called before the first frame update
     void Start()

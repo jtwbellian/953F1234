@@ -1135,13 +1135,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grabBegin: 0.55
   grabEnd: 0.35
-  m_parentHeldObject: 0
+  m_parentHeldObject: 1
   m_gripTransform: {fileID: 479836}
   m_grabVolumes:
   - {fileID: 13646154}
   - {fileID: 13646584}
   m_controller: 1
   m_parentTransform: {fileID: 0}
+  m_grabbedObj: {fileID: 0}
 --- !u!114 &11427812
 MonoBehaviour:
   m_ObjectHideFlags: 0

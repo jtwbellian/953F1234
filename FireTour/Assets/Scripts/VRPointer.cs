@@ -96,7 +96,7 @@ public class VRPointer : MonoBehaviour {
 
     public void CheckControllerInput()
     {
-        if (OVRInput.Get(OVRInput.Button.Two) || OVRInput.Get(OVRInput.Button.One))
+        if (OVRInput.GetDown(OVRInput.Button.Two) || OVRInput.GetDown(OVRInput.Button.One))
         {
             if (hand == secondaryHand)
             {
@@ -111,7 +111,7 @@ public class VRPointer : MonoBehaviour {
             }
         }
 
-        if (OVRInput.Get(OVRInput.Button.Three) || OVRInput.Get(OVRInput.Button.Four))
+        if (OVRInput.GetDown(OVRInput.Button.Three) || OVRInput.GetDown(OVRInput.Button.Four))
         {
             if (hand == primaryHand)
             {

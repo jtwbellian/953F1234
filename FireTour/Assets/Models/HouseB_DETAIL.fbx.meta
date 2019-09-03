@@ -3,7 +3,12 @@ guid: 0cc7e1f15c40b454497a8d9a91719076
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: TextSheet
+    second: {fileID: 2100000, guid: f21299332501e7649990520a54d7bd20, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

@@ -20,7 +20,7 @@ public class PhotonPlayer : MonoBehaviour
         PV = GetComponent<PhotonView>();
         Debug.Log("PV set to " + PV);
 
-        if (PhotonNetwork.IsMasterClient)
+        if (PV.IsMine)
         {
             var handL = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "CustomHandLeft"),
                                                 Vector3.zero, 

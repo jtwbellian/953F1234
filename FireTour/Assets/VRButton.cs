@@ -23,6 +23,7 @@ public class VRButton : MonoBehaviour
         hover = active;
     }
 
+    [ContextMenu("Click")]
     public void Click()
     {
         onPressed.Invoke();

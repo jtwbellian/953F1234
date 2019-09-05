@@ -127,6 +127,7 @@ namespace VRKeys {
 		private bool shifted = false;
 
 		private Layout layout;
+		private Transform cam;
 
 		/// <summary>
 		/// Initialization.
@@ -134,10 +135,12 @@ namespace VRKeys {
 		private IEnumerator Start ()
 		{
 			//XRDevice.SetTrackingSpaceType (TrackingSpaceType.RoomScale);
+			cam = Camera.main.transform;
 
 			if (playerSpace == null)
 				playerSpace = new GameObject ("Play Space");
 			
+			playerSpace.transform.position = cam.position + Vector3.up * -1f;
 
 			//playerSpace.transform.localPosition = InputTracking.GetLocalPosition (XRNode.TrackingReference);
 			//playerSpace.transform.localRotation = InputTracking.GetLocalRotation (XRNode.TrackingReference);
@@ -158,8 +161,15 @@ namespace VRKeys {
 		}
 
 		private void Update () {
-			//playerSpace.transform.localPosition = InputTracking.GetLocalPosition (XRNode.TrackingReference);
-			//playerSpace.transform.localRotation = InputTracking.GetLocalRotation (XRNode.TrackingReference);
+
+			var distToHead = Vector3.Distance(playerSpace.transform.position, cam.position);
+
+			if (distToHead > 0.5f)
+				playerSpace.transform.position = cam.position;
+			
+			Debug.Log("dist = " + distToHead.ToString());
+
+			//playerSpace.transform.localRotation = InputTracking.GetLocalRotation(XRNode.TrackingReference);
 
 			/* 
 			leftHand.transform.localPosition = InputTracking.GetLocalPosition (XRNode.LeftHand);

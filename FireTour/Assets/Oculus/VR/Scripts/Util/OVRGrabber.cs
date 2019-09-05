@@ -76,6 +76,7 @@ public class OVRGrabber : MonoBehaviour
         get { return m_grabbedObj; }
     }
 
+
 	public void ForceRelease(OVRGrabbable grabbable)
     {
         bool canRelease = (

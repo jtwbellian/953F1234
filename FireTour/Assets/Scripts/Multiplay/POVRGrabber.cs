@@ -8,6 +8,7 @@ public class POVRGrabber : OVRGrabber
     public void SetParentTransform(Transform t)
     {
         m_parentTransform = t;
+        Debug.Log(gameObject.name + ": Parent transform set to " + t);
     }
 
     protected override void OffhandGrabbed(OVRGrabbable grabbable)

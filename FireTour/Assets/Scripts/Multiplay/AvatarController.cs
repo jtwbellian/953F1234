@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class AvatarController : MonoBehaviour
 {
@@ -8,36 +9,37 @@ public class AvatarController : MonoBehaviour
     public Transform lhandTarget = null;
     public Transform rhandTarget = null;
 
-    private Animator rhandPose, lhandPose;
+    //private Animator rhandPose, lhandPose;
 
-    private float lGrab = 0f;
-    private float lFinger = 0f;
-    private bool lThumb = false;
-    private float rGrab = 0f;
-    private float rFinger = 0f;
-    private bool rThumb = false;
-    [ReadOnly]
-    public bool rHoldNet = false;
-    [ReadOnly]
-    public bool lHoldNet = false;
+    //private float lGrab = 0f;
+    //private float lFinger = 0f;
+    //private bool lThumb = false;
+    //private float rGrab = 0f;
+    //private float rFinger = 0f;
+    //private bool rThumb = false;
+    //[ReadOnly]
+    //public bool rHoldNet = false;
+    //[ReadOnly]
+    //public bool lHoldNet = false;
 
-    private OVRGrabber rGrabber, lGrabber;
+    //private OVRGrabber rGrabber, lGrabber;
 
     // Start is called before the first frame update
     void Start()
     {
-        rhandPose = rhandTarget.GetComponentInChildren<Animator>();
-        lhandPose = lhandTarget.GetComponentInChildren<Animator>();
+        //rhandPose = rhandTarget.GetComponentInChildren<Animator>();
+        //lhandPose = lhandTarget.GetComponentInChildren<Animator>();
 
-        rhandPose.speed = 1f;
-        lhandPose.speed = 1f;
+        //rhandPose.speed = 1f;
+        //lhandPose.speed = 1f;
 
-        rGrabber = rhandTarget.GetComponent<OVRGrabber>();
-        lGrabber = lhandTarget.GetComponent<OVRGrabber>();
+        //rGrabber = rhandTarget.GetComponent<OVRGrabber>();
+        //lGrabber = lhandTarget.GetComponent<OVRGrabber>();
     }
 
     void Update()
     {
+        /* 
         // Hands disappear for rudder
         POVRGrabbable pgRight = rGrabber.m_grabbedObj as POVRGrabbable;
         POVRGrabbable pgLeft = lGrabber.m_grabbedObj as POVRGrabbable;
@@ -103,5 +105,6 @@ public class AvatarController : MonoBehaviour
         lhandPose.SetFloat("Grip", lGrab);
         lhandPose.SetFloat("Index", lFinger);
         lhandPose.SetBool("ThumbDown", lThumb);
+        */
     }
 }

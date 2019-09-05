@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 8900000, guid: b1464b8e4830fcf46996f6a9c870477e, type: 3}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.15158604, g: 0.15147667, b: 0.19517653, a: 1}
+  m_IndirectSpecularColor: {r: 0.04807123, g: 0.04960239, b: 0.050772887, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3115,6 +3115,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1087109911}
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   hover: 0
@@ -5405,7 +5416,7 @@ PrefabInstance:
     - target: {fileID: 114000013963117480, guid: f28287b1c722ebd4aa4f4d8547ed7fa8,
         type: 3}
       propertyPath: m_textInfo.lineCount
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114000013963117480, guid: f28287b1c722ebd4aa4f4d8547ed7fa8,
         type: 3}
@@ -5479,6 +5490,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000010968355626, guid: f28287b1c722ebd4aa4f4d8547ed7fa8, type: 3}
       propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011330636678, guid: f28287b1c722ebd4aa4f4d8547ed7fa8,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee,
+        type: 2}
+    - target: {fileID: 114000011330636678, guid: f28287b1c722ebd4aa4f4d8547ed7fa8,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114000011330636678, guid: f28287b1c722ebd4aa4f4d8547ed7fa8,
+        type: 3}
+      propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -6357,6 +6384,10 @@ MonoBehaviour:
   loginManager: {fileID: 0}
   accounts:
   - james@binaristudios.com
+  - Guest@binaristudios.com
+  - j@b.com
+  - p@p.com
+  - d@b.com
   keyboard: {fileID: 1736746562}
   mode: 1
 --- !u!4 &2042955741
@@ -6794,6 +6825,11 @@ PrefabInstance:
         type: 3}
       propertyPath: VoiceAmplitude
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424205460186638581, guid: 109cb3e69dc734843bfceac046a6b2ec,
+        type: 3}
+      propertyPath: EnableBody
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 109cb3e69dc734843bfceac046a6b2ec, type: 3}

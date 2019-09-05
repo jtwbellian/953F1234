@@ -11,6 +11,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
 
     public static PhotonLobby lobby;
     private bool gameStarting = false;
+    private bool hasHosted = false;
 
     public GameObject [] playButtons;
 
@@ -65,6 +66,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
         base.OnCreateRoomFailed(returnCode, message);
+        //Debug.Log("FAILED TO CREATE ROOM.");
         Debug.Log("Trying again...");
         attempt ++;
         Invoke("CreateRoom", 0.2f);
@@ -97,6 +99,8 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
 
     public void OnJoin(string room)
     {
+        Debug.Log("JOINING ROOM " + room);
+
         if (gameStarting)
             return;
         
@@ -104,17 +108,16 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
         CancelButton.SetActive(true);
 
         PhotonNetwork.JoinRoom(roomPrefix + room);
-        //PhotonNetwork.JoinRandomRoom();
-
         gameStarting = true;
     }
 
     public void OnHost()
     {
-        if (gameStarting)
+        if (hasHosted)
             return;
 
         CreateRoom();
+        hasHosted = true;
     }
 
     public void OnStartTraining()
@@ -132,7 +135,8 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
         //}
 
         gameStarting = false;
-        //PhotonNetwork.LeaveRoom();
+        hasHosted = false;
+        PhotonNetwork.LeaveRoom();
     }
 
 }

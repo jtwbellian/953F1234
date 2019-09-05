@@ -152,7 +152,7 @@ namespace VRKeys {
 
 			keyboard.ShowInfoMessage ("logging in...");
 
-			yield return new WaitForSeconds (2f);
+			yield return new WaitForSeconds (1f);
 
 			loginManager.mainMenu.SetActive(true);
 			// Invokes any additional events when email is entered
@@ -170,7 +170,7 @@ namespace VRKeys {
 				loginManager.menu_prompt.SetActive(true);
 			}
 
-			yield return new WaitForSeconds (2f);
+			yield return new WaitForSeconds (1f);
 
 			// Reset keyboard
 			keyboard.HideSuccessMessage();
@@ -180,11 +180,17 @@ namespace VRKeys {
 			//keyboard.gameObject.SetActive(false);
 		}
 
+		[ContextMenu("Guest Login")]
+		public void LoginAsGuest()
+		{
+			StartCoroutine(SubmitEmail("Guest@binaristudios.com"));
+		}
+
 		private IEnumerator SubmitCode(string code) {
 
 			keyboard.ShowInfoMessage ("Searching for active sessions...");
 
-			yield return new WaitForSeconds (2f);
+			yield return new WaitForSeconds (1f);
 
 			Debug.Log("Done");
 			onCodeEnter.Invoke();
@@ -204,7 +210,7 @@ namespace VRKeys {
 		{
 			keyboard.ShowInfoMessage ("Connecting to \"" + text + "\"");
 
-			yield return new WaitForSeconds (2f);
+			yield return new WaitForSeconds (1f);
 
 			keyboard.HideSuccessMessage ();
 			keyboard.SetText ("");

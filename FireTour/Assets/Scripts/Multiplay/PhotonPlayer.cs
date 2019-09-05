@@ -5,13 +5,13 @@ using System.IO;
 using Photon.Pun;
 using Photon;
 
-
 public class PhotonPlayer : MonoBehaviour
 {
     PhotonView PV;
-    public GameObject myAvatar;
-    public AvatarController avController;
+    private AvatarController avController;
+    public GameObject playerController;
     private AvatarParts parts;
+    public string myName = "";
     
 
     // Start is called before the first frame update
@@ -20,7 +20,7 @@ public class PhotonPlayer : MonoBehaviour
         PV = GetComponent<PhotonView>();
         Debug.Log("PV set to " + PV);
 
-        if (PV.IsMine)
+        if (PhotonNetwork.IsMasterClient)
         {
             var handL = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "CustomHandLeft"),
                                                 Vector3.zero, 
@@ -28,19 +28,31 @@ public class PhotonPlayer : MonoBehaviour
             var handR = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "CustomHandRight"),
                                     Vector3.zero, 
                                     Quaternion.identity, 0);
+            var head = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Head"),
+                                    Vector3.zero, 
+                                    Quaternion.identity, 0);
 
+            var player = Instantiate(playerController);
 
-            GameObject obj = Resources.Load<GameObject>("PhotonPrefabs/OVRPlayerController");
-            var player = Instantiate(obj);
+            Debug.Log("created player object: " + player);
+
+            avController = player.GetComponent<AvatarController>();
+
+            head.transform.SetParent(avController.headTarget);
+
+            PhotonHead phead = head.GetComponent<PhotonHead>();
+
+            phead.SetName(myName);
 
             POVRGrabber grabberL = handL.GetComponent<POVRGrabber>();
             POVRGrabber grabberR = handR.GetComponent<POVRGrabber>();
 
             grabberL.SetParentTransform(player.transform);
             grabberR.SetParentTransform(player.transform);
+
 /*
             parts = myAvatar.GetComponent<AvatarParts>();
-            avController = player.GetComponent<AvatarController>();
+
 
             //PandaController panda = player.GetComponent<PandaController>();
             
@@ -58,4 +70,5 @@ public class PhotonPlayer : MonoBehaviour
             */
         }
     }
+
 }

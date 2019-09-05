@@ -8,6 +8,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using OVRTouchSample;
+using Photon;
+using Photon.Pun;
+
 #if UNITY_EDITOR
 using UnityEngine.SceneManagement;
 #endif
@@ -31,6 +34,8 @@ namespace OVRTouchSample
 
         public const float TRIGGER_DEBOUNCE_TIME = 0.05f;
         public const float THUMB_DEBOUNCE_TIME = 0.15f;
+
+        public PhotonView pv;
 
         [SerializeField]
         private OVRInput.Controller m_controller;
@@ -57,6 +62,7 @@ namespace OVRTouchSample
 
         private bool m_restoreOnInputAcquired = false;
 
+
         private void Awake()
         {
             m_grabber = GetComponent<OVRGrabber>();
@@ -64,6 +70,7 @@ namespace OVRTouchSample
 
         private void Start()
         {
+            pv = GetComponent<PhotonView>();
             m_showAfterInputFocusAcquired = new List<Renderer>();
 
             // Collision starts disabled. We'll enable it for certain cases such as making a fist.
@@ -85,6 +92,9 @@ namespace OVRTouchSample
 
         private void Update()
         {
+            if (!pv.IsMine)
+                return;
+
             UpdateCapTouchStates();
 
             m_pointBlend = InputValueRateChange(m_isPointing, m_pointBlend);
@@ -108,6 +118,9 @@ namespace OVRTouchSample
 
         private void LateUpdate()
         {
+            if (!pv.IsMine)
+                return;
+                
             // Hand's collision grows over a short amount of time on enable, rather than snapping to on, to help somewhat with interpenetration issues.
             if (m_collisionEnabled && m_collisionScaleCurrent + Mathf.Epsilon < COLLIDER_SCALE_MAX)
             {
@@ -123,6 +136,9 @@ namespace OVRTouchSample
         // Simple Dash support. Just hide the hands.
         private void OnInputFocusLost()
         {
+            if (!pv.IsMine)
+                return;
+                
             if (gameObject.activeInHierarchy)
             {
                 m_showAfterInputFocusAcquired.Clear();
@@ -144,6 +160,9 @@ namespace OVRTouchSample
 
         private void OnInputFocusAcquired()
         {
+            if (!pv.IsMine)
+                return;
+
             if (m_restoreOnInputAcquired)
             {
                 for (int i = 0; i < m_showAfterInputFocusAcquired.Count; ++i)
@@ -171,6 +190,9 @@ namespace OVRTouchSample
 
         private void UpdateAnimStates()
         {
+            if (!pv.IsMine)
+                return;
+
             bool grabbing = m_grabber.grabbedObject != null;
             HandPose grabPose = m_defaultGrabPose;
             if (grabbing)

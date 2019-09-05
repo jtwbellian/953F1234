@@ -43,7 +43,6 @@ GameObject:
   - component: {fileID: 887092731784728132}
   - component: {fileID: 6013342311538675644}
   - component: {fileID: 2834745849552244303}
-  - component: {fileID: 8203714894276344211}
   m_Layer: 0
   m_Name: r_hand_skeletal_lowres
   m_TagString: Untagged
@@ -105,7 +104,6 @@ MonoBehaviour:
   OwnershipTransfer: 0
   ObservedComponents:
   - {fileID: 2834745849552244303}
-  - {fileID: 8203714894276344211}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -140,39 +138,6 @@ MonoBehaviour:
     LayerIndex: 1
   - SynchronizeType: 2
     LayerIndex: 2
---- !u!114 &8203714894276344211
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 943584554243717958}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8efc6b1d64977384eb3405357896c656, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_PositionModel:
-    SynchronizeEnabled: 1
-    TeleportEnabled: 1
-    TeleportIfDistanceGreaterThan: 3
-    InterpolateOption: 2
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 1
-    ExtrapolateOption: 0
-    ExtrapolateSpeed: 1
-    ExtrapolateIncludingRoundTripTime: 1
-    ExtrapolateNumberOfStoredPositions: 1
-  m_RotationModel:
-    SynchronizeEnabled: 1
-    InterpolateOption: 1
-    InterpolateRotateTowardsSpeed: 180
-    InterpolateLerpSpeed: 5
-  m_ScaleModel:
-    SynchronizeEnabled: 0
-    InterpolateOption: 0
-    InterpolateMoveTowardsSpeed: 1
-    InterpolateLerpSpeed: 0
 --- !u!1 &943592461551057058
 GameObject:
   m_ObjectHideFlags: 0
@@ -1156,6 +1121,7 @@ GameObject:
   - component: {fileID: 7669842495625153619}
   - component: {fileID: 945208981162424488}
   - component: {fileID: 6677724742004830045}
+  - component: {fileID: 7062998221337279172}
   m_Layer: 0
   m_Name: CustomHandRight
   m_TagString: Untagged
@@ -1172,7 +1138,7 @@ Transform:
   m_GameObject: {fileID: 945208981152693062}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1.1}
   m_Children:
   - {fileID: 945208981152430298}
   - {fileID: 945208981152381362}
@@ -1230,6 +1196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79b7e65854ace8f44b05c52c6e824354, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pv: {fileID: 6677724742004830045}
   m_controller: 2
   m_animator: {fileID: 887092731784728132}
   m_defaultGrabPose: {fileID: 11437176, guid: 35525acb4c3b75c4a8c4dc2c117427be, type: 3}
@@ -1248,13 +1215,28 @@ MonoBehaviour:
   ObservedComponentsFoldoutOpen: 1
   Group: 0
   prefixField: -1
-  Synchronization: 0
+  Synchronization: 3
   OwnershipTransfer: 0
   ObservedComponents:
-  - {fileID: 0}
+  - {fileID: 7062998221337279172}
   viewIdField: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &7062998221337279172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945208981152693062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
 --- !u!1 &945208981152752526
 GameObject:
   m_ObjectHideFlags: 0

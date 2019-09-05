@@ -12,7 +12,6 @@ public class VRPointer : MonoBehaviour {
     public GameObject cursor;
     public GameObject laser;
     public Transform playerTransform;
-
     
     // Use this for initialization
     void Start () 
@@ -96,7 +95,8 @@ public class VRPointer : MonoBehaviour {
 
     public void CheckControllerInput()
     {
-        if (OVRInput.GetDown(OVRInput.Button.Two) || OVRInput.GetDown(OVRInput.Button.One))
+        //
+        if (OVRInput.GetDown(OVRInput.Button.Two) || OVRInput.GetDown(OVRInput.Button.One) || OVRInput.GetDown(OVRInput.RawButton.RIndexTrigger))
         {
             if (hand == secondaryHand)
             {
@@ -111,7 +111,7 @@ public class VRPointer : MonoBehaviour {
             }
         }
 
-        if (OVRInput.GetDown(OVRInput.Button.Three) || OVRInput.GetDown(OVRInput.Button.Four))
+        if (OVRInput.GetDown(OVRInput.Button.Three) || OVRInput.GetDown(OVRInput.Button.Four) || OVRInput.GetDown(OVRInput.RawButton.LIndexTrigger))
         {
             if (hand == primaryHand)
             {

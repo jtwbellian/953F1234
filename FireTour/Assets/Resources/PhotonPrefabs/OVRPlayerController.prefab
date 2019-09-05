@@ -277,8 +277,7 @@ MonoBehaviour:
   headTarget: {fileID: 1667240244970512829}
   lhandTarget: {fileID: 1667240244970437843}
   rhandTarget: {fileID: 1667240244970433725}
-  rHoldNet: 0
-  lHoldNet: 0
+  nametag: {fileID: 0}
 --- !u!114 &8195965932331667206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,8 +290,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1871a14e55663204c91095adf5b8de9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackingPoint: {fileID: 0}
-  speed: 0.4
+  trackingPoint: {fileID: 1667240244970512829}
+  speed: 1.5
 --- !u!1 &1667240244970552731
 GameObject:
   m_ObjectHideFlags: 0

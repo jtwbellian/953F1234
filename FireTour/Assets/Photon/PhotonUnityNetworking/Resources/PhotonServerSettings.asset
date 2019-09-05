@@ -38,5 +38,6 @@ MonoBehaviour:
   - RemoveBlock
   - RespawnSpaceship
   - SetHeld
+  - RPC_SetName
   DisableAutoOpenWizard: 1
   ShowSettings: 1

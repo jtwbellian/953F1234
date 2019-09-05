@@ -9,6 +9,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: PropAtlas
     second: {fileID: 2100000, guid: 177fa1ea2beb3a946a956aac681fffee, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: defaultMat
+    second: {fileID: 2100000, guid: 177fa1ea2beb3a946a956aac681fffee, type: 2}
   materials:
     importMaterials: 1
     materialName: 0

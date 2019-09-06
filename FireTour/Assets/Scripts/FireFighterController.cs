@@ -18,6 +18,6 @@ public class FireFighterController : MonoBehaviour
 
     void Update()
     {
-    animator.SetFloat("Speed", agent.velocity.magnitude / maxSpeed);
+        animator.SetFloat("Speed", agent.velocity.magnitude / maxSpeed);
     }
 }

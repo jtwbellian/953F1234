@@ -22,6 +22,8 @@ public class PhotonPlayer : MonoBehaviour
 
         if (PV.IsMine)
         {
+            Debug.Log(this.myName + " belongs to this user and was created.");
+
             var handL = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "CustomHandLeft"),
                                                 Vector3.zero, 
                                                 Quaternion.identity, 0);
@@ -39,6 +41,7 @@ public class PhotonPlayer : MonoBehaviour
             avController = player.GetComponent<AvatarController>();
 
             head.transform.SetParent(avController.headTarget);
+            head.transform.localPosition = Vector3.zero;
 
             PhotonHead phead = head.GetComponent<PhotonHead>();
 

@@ -8,7 +8,6 @@ using UnityEngine.SceneManagement;
 
 public class PhotonLobby : MonoBehaviourPunCallbacks
 {
-
     public static PhotonLobby lobby;
     private bool gameStarting = false;
     private bool hasHosted = false;

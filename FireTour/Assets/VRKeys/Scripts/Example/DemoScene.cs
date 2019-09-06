@@ -152,25 +152,39 @@ namespace VRKeys {
 
 			keyboard.ShowInfoMessage ("logging in...");
 
-			yield return new WaitForSeconds (1f);
+			yield return new WaitForSeconds (0.2f);
 
 			loginManager.mainMenu.SetActive(true);
 			// Invokes any additional events when email is entered
 			onEmailEntered.Invoke();
 			loginManager.SetUser(email);
 
+			// 0 for menu, 1 for prompt
+			var prompt = -1;
+
 			if (accounts.Contains(email))
 			{
 				keyboard.ShowSuccessMessage ("Welcome back, " + email);
-				loginManager.menu_lobby.SetActive(true);
+				prompt = 0;
 			}
 			else
 			{
 				keyboard.ShowSuccessMessage ("No account found for '" + email + "'.");
-				loginManager.menu_prompt.SetActive(true);
+				prompt = 1;
 			}
 
 			yield return new WaitForSeconds (1f);
+
+			switch(prompt)
+			{
+				case 0: // Show the Main Menu options (host / join)
+					loginManager.menu_lobby.SetActive(true);
+					break;
+
+				case 1: // show the create account prompt
+					loginManager.menu_prompt.SetActive(true);
+					break;
+			}
 
 			// Reset keyboard
 			keyboard.HideSuccessMessage();

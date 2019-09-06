@@ -126,7 +126,7 @@ public class OVRGrabber : MonoBehaviour
         }
     }
 
-	void FixedUpdate()
+	protected void FixedUpdate()
 	{
 		if (operatingWithoutOVRCameraRig)
 			OnUpdatedAnchors();
@@ -148,6 +148,7 @@ public class OVRGrabber : MonoBehaviour
         {
             MoveGrabbedObject(destPos, destRot);
         }
+        
         m_lastPos = transform.position;
         m_lastRot = transform.rotation;
 

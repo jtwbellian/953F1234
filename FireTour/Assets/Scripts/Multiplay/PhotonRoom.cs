@@ -87,11 +87,9 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
     void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        //if (hasSpawned)
-        //    return;
-        if (!PhotonNetwork.IsMasterClient)
-            return;
-        
+        /* if (!PhotonNetwork.IsMasterClient)
+            return;*/
+
         currentScene = scene.buildIndex;
 
         if (currentScene == multiplayerScene)
@@ -99,16 +97,18 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
             CreatePlayer();
             playerInGame++;
         }
-
-        //hasSpawned = true;
     }
 
     // Creates a new PhotonNetwork Player who will spawn the avatar parts and the player controller
     void CreatePlayer()
     {
+        if (hasSpawned)
+            return;
+
         var obj = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonNetworkPlayer"), new Vector3(0, 4f, -1.5f), Quaternion.identity, 0);
         PhotonPlayer player = obj.GetComponent<PhotonPlayer>();
         player.myName = LoginManager.GetInstance().GetUser();
+        hasSpawned = true;
     }
 }
 

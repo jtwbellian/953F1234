@@ -1,10 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon;
+using Photon.Pun;
 
 public class POVRGrabber : OVRGrabber
 {
+    PhotonView view;
 
+    private void Start() 
+    {
+        view = GetComponent<PhotonView>();
+        base.Start();
+    }
+    
     public void SetParentTransform(Transform t)
     {
         m_parentTransform = t;
@@ -13,11 +22,25 @@ public class POVRGrabber : OVRGrabber
 
     protected override void OffhandGrabbed(OVRGrabbable grabbable)
     {
+        if (!view.IsMine)
+            return;
+
         base.OffhandGrabbed(grabbable);
     }
 
+	private void FixedUpdate()
+	{
+        if (!view.IsMine)
+            return;
+        
+        base.FixedUpdate();
+	}
+
     protected override void GrabBegin()
     {
+        if (!view.IsMine)
+            return;
+            
         float closestMagSq = float.MaxValue;
 		OVRGrabbable closestGrabbable = null;
         Collider closestGrabbableCollider = null;

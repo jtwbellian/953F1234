@@ -112,6 +112,9 @@ namespace OVRTouchSample
         // debouncing.
         private void UpdateCapTouchStates()
         {
+            if (!pv.IsMine)
+                return;
+
             m_isPointing = !OVRInput.Get(OVRInput.NearTouch.PrimaryIndexTrigger, m_controller);
             m_isGivingThumbsUp = !OVRInput.Get(OVRInput.NearTouch.PrimaryThumbButtons, m_controller);
         }

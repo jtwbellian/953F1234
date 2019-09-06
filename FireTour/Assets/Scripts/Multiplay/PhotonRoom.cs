@@ -87,17 +87,20 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
     void OnSceneFinishedLoading(Scene scene, LoadSceneMode mode)
     {
-        if (hasSpawned)
+        //if (hasSpawned)
+        //    return;
+        if (!PhotonNetwork.IsMasterClient)
             return;
         
         currentScene = scene.buildIndex;
+
         if (currentScene == multiplayerScene)
         {
             CreatePlayer();
             playerInGame++;
         }
 
-        hasSpawned = true;
+        //hasSpawned = true;
     }
 
     // Creates a new PhotonNetwork Player who will spawn the avatar parts and the player controller

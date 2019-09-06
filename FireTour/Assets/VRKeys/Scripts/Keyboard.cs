@@ -167,7 +167,7 @@ namespace VRKeys {
 			if (distToHead > 0.5f)
 				playerSpace.transform.position = cam.position;
 			
-			Debug.Log("dist = " + distToHead.ToString());
+			//Debug.Log("dist = " + distToHead.ToString());
 
 			//playerSpace.transform.localRotation = InputTracking.GetLocalRotation(XRNode.TrackingReference);
 

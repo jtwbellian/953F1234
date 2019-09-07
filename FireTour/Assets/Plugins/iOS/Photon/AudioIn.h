@@ -27,10 +27,10 @@ extern "C" {
 @end
 
 extern "C" {
-    Photon_Audio_In* Photon_Audio_In_CreateReader(int);
+    Photon_Audio_In* Photon_Audio_In_CreateReader(int sessionCategory, int sessionMode, int sessionCategoryOptions);
     bool Photon_Audio_In_Read(Photon_Audio_In* handle, float* buf, int len);
     
-    Photon_Audio_In* Photon_Audio_In_CreatePusher(int hostID, int deviceID, Photon_IOSAudio_PushCallback pushCallback);
+    Photon_Audio_In* Photon_Audio_In_CreatePusher(int hostID, Photon_IOSAudio_PushCallback pushCallback,  int sessionCategory, int sessionMode, int sessionCategoryOptions);
     
     void Photon_Audio_In_Destroy(Photon_Audio_In* handle);
 }

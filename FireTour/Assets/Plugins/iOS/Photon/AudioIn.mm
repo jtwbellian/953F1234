@@ -8,6 +8,8 @@
 // Framework includes
 #import <AVFoundation/AVAudioSession.h>
 
+#define SAMPLE_RATE 48000
+
 #define XThrowIfError(error, operation)                                                 \
 do {                                                                                    \
 if (error) {                                                                            \
@@ -41,15 +43,22 @@ struct CallbackData {
 @interface Photon_Audio_In() {
 @public
     CallbackData cd;
+    AVAudioSessionCategory sessionCategory;
+    AVAudioSessionMode sessionMode;
+    AVAudioSessionCategoryOptions sessionCategoryOptions;
 }
+- (void)setCategory:(int)category mode:(int)mode options:(int)options;
 - (void)setupAudioSession;
 - (void)setupIOUnit;
 - (void)setupAudioChain;
 @end
 
 
-Photon_Audio_In* Photon_Audio_In_CreateReader(int deviceID) {
+Photon_Audio_In* Photon_Audio_In_CreateReader(int sessionCategory, int sessionMode, int sessionCategoryOptions) {
     Photon_Audio_In* handle = [[Photon_Audio_In alloc] init];
+    [handle setCategory:sessionCategory mode:sessionMode options:sessionCategoryOptions];
+    [handle setupAudioChain];
+    
     handle->cd.ringBuffer = (float*)malloc(sizeof(float)*BUFFER_SIZE);
     [handles addObject:handle];
     [handle startIOUnit];
@@ -73,14 +82,20 @@ bool Photon_Audio_In_Read(Photon_Audio_In* handle, float* buf, int len) {
     } else {
         memcpy(buf, cd.ringBuffer + pos, len * sizeof(float));
     }
-    // tone test
-    //for(int i = 0;i < len;i++) buf[i] = sin((cd.ringReadPos + i) / 16.0f)/4;
     cd.ringReadPos += len;
+    
+    // tone test
+    //    static int tonePos = 0;
+    //    for(int i = 0;i < len;i++) buf[i] = sin((tonePos++) / 16.0f)/4;
+    
     return true;
 }
 
-Photon_Audio_In* Photon_Audio_In_CreatePusher(int hostID, int deviceID, Photon_IOSAudio_PushCallback callback) {
+Photon_Audio_In* Photon_Audio_In_CreatePusher(int hostID, Photon_IOSAudio_PushCallback callback, int sessionCategory, int sessionMode, int sessionCategoryOptions) {
     Photon_Audio_In* handle = [[Photon_Audio_In alloc] init];
+    [handle setCategory:sessionCategory mode:sessionMode options:sessionCategoryOptions];
+    [handle setupAudioChain];
+    
     handle->cd.pushCallback = callback;
     handle->cd.pushHostID = hostID;
     [handles addObject:handle];
@@ -94,12 +109,12 @@ void Photon_Audio_In_Destroy(Photon_Audio_In* handle) {
 }
 
 // Render callback function
-static OSStatus	performRender (void                         *inRefCon,
-                               AudioUnitRenderActionFlags 	*ioActionFlags,
-                               const AudioTimeStamp 		*inTimeStamp,
-                               UInt32 						inBusNumber,
-                               UInt32 						inNumberFrames,
-                               AudioBufferList              *ioData)
+static OSStatus    performRender (void                         *inRefCon,
+                                  AudioUnitRenderActionFlags     *ioActionFlags,
+                                  const AudioTimeStamp         *inTimeStamp,
+                                  UInt32                         inBusNumber,
+                                  UInt32                         inNumberFrames,
+                                  AudioBufferList              *ioData)
 {
     OSStatus err = noErr;
     CallbackData& cd = *((CallbackData*)inRefCon);
@@ -138,14 +153,34 @@ static OSStatus	performRender (void                         *inRefCon,
 
 @implementation Photon_Audio_In
 
-- (id)init
-{
-    if (self = [super init]) {
-        [self setupAudioChain];
+- (void)setCategory:(int)category mode:(int)mode options:(int)options {
+    switch (category)
+    {
+        case 0: self->sessionCategory = AVAudioSessionCategoryAmbient; break;
+        case 1: self->sessionCategory = AVAudioSessionCategorySoloAmbient; break;
+        case 2: self->sessionCategory = AVAudioSessionCategoryPlayback; break;
+        case 3: self->sessionCategory = AVAudioSessionCategoryRecord; break;
+        case 4: self->sessionCategory = AVAudioSessionCategoryPlayAndRecord; break;
+        case 5: self->sessionCategory = AVAudioSessionCategoryAudioProcessing; break;
+        case 6: self->sessionCategory = AVAudioSessionCategoryMultiRoute; break;
+        default: throw [NSException exceptionWithName:@"PhotonAudioException" reason:[NSString stringWithFormat:@"Unknown session category %d", category] userInfo:nullptr];
     }
-    return self;
+    
+    switch (mode)
+    {
+        case 0: self->sessionMode = AVAudioSessionModeDefault; break;
+        case 1: self->sessionMode = AVAudioSessionModeVoiceChat; break;
+        case 2: self->sessionMode = AVAudioSessionModeGameChat; break;
+        case 3: self->sessionMode = AVAudioSessionModeVideoRecording; break;
+        case 4: self->sessionMode = AVAudioSessionModeMeasurement; break;
+        case 5: self->sessionMode = AVAudioSessionModeMoviePlayback; break;
+        case 6: self->sessionMode = AVAudioSessionModeVideoChat; break;
+        case 7: self->sessionMode = AVAudioSessionModeSpokenAudio; break;
+            //       case 8: self->sessionMode = AVAudioSessionModeVoicePrompt; break;
+        default: throw [NSException exceptionWithName:@"PhotonAudioException" reason:[NSString stringWithFormat:@"Unknown session mode %d", mode] userInfo:nullptr];
+    }
+    self->sessionCategoryOptions = options;
 }
-
 
 - (void)handleInterruption:(NSNotification *)notification
 {
@@ -226,9 +261,12 @@ static OSStatus	performRender (void                         *inRefCon,
         // Configure the audio session
         AVAudioSession *sessionInstance = [AVAudioSession sharedInstance];
         
-        // we are going to play and record so we pick that category
         NSError *error = nil;
-        [sessionInstance setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
+        NSLog(@"Setting category = %@, mode = %@, options = %lu", self->sessionCategory, self->sessionMode, (unsigned long)self->sessionCategoryOptions);
+        [sessionInstance setCategory:self->sessionCategory
+                                mode:self->sessionMode
+                             options:self->sessionCategoryOptions
+                               error:&error];
         XThrowIfError((OSStatus)error.code, "couldn't set session's audio category");
         
         // set the buffer duration to 5 ms
@@ -237,8 +275,8 @@ static OSStatus	performRender (void                         *inRefCon,
         XThrowIfError((OSStatus)error.code, "couldn't set session's I/O buffer duration");
         
         // set the session's sample rate
-        [sessionInstance setPreferredSampleRate:44100 error:&error];
-        XThrowIfError((OSStatus)error.code, "couldn't set session's preferred sample rate");
+        //        [sessionInstance setPreferredSampleRate:44100 error:&error];
+        //        XThrowIfError((OSStatus)error.code, "couldn't set session's preferred sample rate");
         
         // add interruption handler
         [[NSNotificationCenter defaultCenter] addObserver:self
@@ -253,10 +291,10 @@ static OSStatus	performRender (void                         *inRefCon,
                                                    object:sessionInstance];
         
         // if media services are reset, we need to rebuild our audio chain
-        [[NSNotificationCenter defaultCenter]	addObserver:	self
-                                                 selector:	@selector(handleMediaServerReset:)
-                                                     name:	AVAudioSessionMediaServicesWereResetNotification
-                                                   object:	sessionInstance];
+        [[NSNotificationCenter defaultCenter]    addObserver:    self
+                                                    selector:    @selector(handleMediaServerReset:)
+                                                        name:    AVAudioSessionMediaServicesWereResetNotification
+                                                      object:    sessionInstance];
         
         // activate the audio session
         [[AVAudioSession sharedInstance] setActive:YES error:&error];
@@ -298,9 +336,8 @@ static OSStatus	performRender (void                         *inRefCon,
         XThrowIfError(AudioUnitSetProperty(cd.rioUnit, kAudioOutputUnitProperty_EnableIO, kAudioUnitScope_Output, 0, &one, sizeof(one)), "could not enable output on AURemoteIO");
         
         // Explicitly set the input and output client formats
-        // sample rate = 44100, num channels = 1, format = 32 bit floating point
         
-        int sampleRate = 44100;
+        int sampleRate = SAMPLE_RATE;
         int channels = 1;
         AudioStreamBasicDescription ioFormat;
         ioFormat.mSampleRate = sampleRate;
@@ -312,6 +349,9 @@ static OSStatus	performRender (void                         *inRefCon,
         ioFormat.mBitsPerChannel = sizeof(float) * 8;
         ioFormat.mReserved = 0;
         
+        XThrowIfError(AudioUnitSetProperty(cd.rioUnit, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Input, 0, &ioFormat, sizeof(ioFormat)), "couldn't set input stream format AURemoteIO");
+        
+        XThrowIfError(AudioUnitSetProperty(cd.rioUnit, kAudioUnitProperty_StreamFormat, kAudioUnitScope_Output, 1, &ioFormat, sizeof(ioFormat)), "couldn't set output stream format AURemoteIO");
         
         // Set the MaximumFramesPerSlice property. This property is used to describe to an audio unit the maximum number
         // of samples it will be asked to produce on any single given call to AudioUnitRender

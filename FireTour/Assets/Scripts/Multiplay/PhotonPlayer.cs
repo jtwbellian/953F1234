@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using Photon.Pun;
+using Photon.Voice.PUN;
 using Photon;
 
 public class PhotonPlayer : MonoBehaviour
 {
     PhotonView PV;
+    PhotonVoiceNetwork voiceNetwork;
     private AvatarController avController;
     public GameObject playerController;
     private AvatarParts parts;
@@ -17,6 +19,7 @@ public class PhotonPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        voiceNetwork = GetComponent<PhotonVoiceNetwork>();
         PV = GetComponent<PhotonView>();
         Debug.Log("PV set to " + PV);
 
@@ -41,11 +44,12 @@ public class PhotonPlayer : MonoBehaviour
             avController = player.GetComponent<AvatarController>();
 
             head.transform.SetParent(avController.headTarget);
-            head.transform.localPosition = Vector3.zero;
 
             PhotonHead phead = head.GetComponent<PhotonHead>();
 
-            phead.SetName(myName);
+            string[] userName = myName.Split('@');
+
+            phead.SetName(userName[0]);
 
             POVRGrabber grabberL = handL.GetComponent<POVRGrabber>();
             POVRGrabber grabberR = handR.GetComponent<POVRGrabber>();

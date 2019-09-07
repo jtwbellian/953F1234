@@ -16,6 +16,6 @@ public class billboard : MonoBehaviour
         cam = Camera.main;
         
         if (cam)
-            transform.rotation = Quaternion.LookRotation(transform.position - cam.transform.position, transform.up);
+            transform.LookAt(cam.transform);
     }
 }

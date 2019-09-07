@@ -15,7 +15,7 @@ MonoBehaviour:
   AppSettings:
     AppIdRealtime: ed690620-ea30-4b31-80ca-50ed08009a3b
     AppIdChat: ed690620-ea30-4b31-80ca-50ed08009a3b
-    AppIdVoice: 
+    AppIdVoice: 19f87e52-2aff-4b67-ad48-dce26ee5864e
     AppVersion: 1
     UseNameServer: 1
     FixedRegion: 
@@ -39,5 +39,6 @@ MonoBehaviour:
   - RespawnSpaceship
   - SetHeld
   - RPC_SetName
+  - ChangeColour
   DisableAutoOpenWizard: 1
   ShowSettings: 1

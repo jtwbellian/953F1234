@@ -1,0 +1,81 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using System.IO;
+using Photon.Pun;
+using Photon.Voice.PUN;
+using Photon;
+
+public class PhotonPlayer : MonoBehaviour
+{
+    PhotonView PV;
+    PhotonVoiceNetwork voiceNetwork;
+    private AvatarController avController;
+    public GameObject playerController;
+    private AvatarParts parts;
+    public string myName = "";
+    
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        voiceNetwork = GetComponent<PhotonVoiceNetwork>();
+        PV = GetComponent<PhotonView>();
+        Debug.Log("PV set to " + PV);
+
+        if (PV.IsMine)
+        {
+            Debug.Log(this.myName + " belongs to this user and was created.");
+
+            var handL = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "CustomHandLeft"),
+                                                Vector3.zero, 
+                                                Quaternion.identity, 0);
+            var handR = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "CustomHandRight"),
+                                    Vector3.zero, 
+                                    Quaternion.identity, 0);
+            var head = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Head"),
+                                    Vector3.zero, 
+                                    Quaternion.identity, 0);
+
+            var player = Instantiate(playerController);
+
+            Debug.Log("created player object: " + player);
+
+            avController = player.GetComponent<AvatarController>();
+
+            head.transform.SetParent(avController.headTarget);
+
+            PhotonHead phead = head.GetComponent<PhotonHead>();
+
+            string[] userName = myName.Split('@');
+
+            phead.SetName(userName[0]);
+
+            POVRGrabber grabberL = handL.GetComponent<POVRGrabber>();
+            POVRGrabber grabberR = handR.GetComponent<POVRGrabber>();
+
+            grabberL.SetParentTransform(player.transform);
+            grabberR.SetParentTransform(player.transform);
+
+/*
+            parts = myAvatar.GetComponent<AvatarParts>();
+
+
+            //PandaController panda = player.GetComponent<PandaController>();
+            
+            parts.Head.SetParent(avController.headTarget.transform);
+            parts.Head.localRotation = Quaternion.identity;
+            parts.Head.localPosition = Vector3.zero;
+
+            parts.RHand.SetParent(avController.rhandTarget.transform);
+            parts.RHand.localRotation = Quaternion.identity;
+            parts.RHand.localPosition = Vector3.zero;
+
+            parts.LHand.SetParent(avController.lhandTarget.transform);
+            parts.LHand.localRotation = Quaternion.identity;
+            parts.LHand.localPosition = Vector3.zero;
+            */
+        }
+    }
+
+}

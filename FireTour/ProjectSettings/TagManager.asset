@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Surface
+  - actor
+  - location
+  - action
   layers:
   - Default
   - TransparentFX

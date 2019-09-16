@@ -15,7 +15,8 @@ public class FireProbe : MonoBehaviour
     private FXManager fx;
     public SphereCollider trigger;
     private Rigidbody rb; 
-    private float updateTime = 5f;
+    private float updateTime = 2.5f;
+    private Vector3 randomOffset;
 
     //Calculuate number of times a probe can expand before reaching MAX_RADIUS
     private static int shellCount = Mathf.RoundToInt(Mathf.Log(MAX_RADIUS / startRadius) / Mathf.Log(growRate)); 
@@ -57,6 +58,8 @@ public class FireProbe : MonoBehaviour
 
         if (activeOnStart)
             TurnOn();
+
+        randomOffset = new Vector3(Random.Range(-0.2f, 0.2f),  Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f));
     }
 
      [ContextMenu("Light")]
@@ -66,7 +69,7 @@ public class FireProbe : MonoBehaviour
         fm.AddProbe(this);
         StartCoroutine("Burn");
     }
-
+     [ContextMenu("Extinguish")]
     public void TurnOff()
     {
         lit = false;
@@ -75,7 +78,7 @@ public class FireProbe : MonoBehaviour
     }
 
     // Refresh
-    public void Refresh()
+    public void Grow()
     {
         if (trigger.radius < MAX_RADIUS)
         {
@@ -104,8 +107,9 @@ public class FireProbe : MonoBehaviour
     {
         while (lit)
         {
-            fx.Burst(fireType, transform.position, fm.windHorn.windSpeed, num);
-            fx.Burst(smokeType, transform.position, fm.windHorn.windSpeed, num);
+            randomOffset = new Vector3(Random.Range(-0.2f, 0.2f),  Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f));
+            fx.Burst(fireType, transform.position + randomOffset, fm.windHorn.windSpeed, num);
+            fx.Burst(smokeType, transform.position + randomOffset, fm.windHorn.windSpeed, num);
             yield return new WaitForSeconds(updateTime);
         }
         yield return null;

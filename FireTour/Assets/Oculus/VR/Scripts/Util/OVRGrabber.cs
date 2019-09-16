@@ -45,7 +45,7 @@ public class OVRGrabber : MonoBehaviour
 
     // Should be OVRInput.Controller.LTouch or OVRInput.Controller.RTouch.
     [SerializeField]
-    protected OVRInput.Controller m_controller;
+    public OVRInput.Controller m_controller; // I needed this so I made it public .... remind to extend this class soon
 
     [SerializeField]
     protected Transform m_parentTransform;
@@ -56,9 +56,15 @@ public class OVRGrabber : MonoBehaviour
     protected Quaternion m_anchorOffsetRotation;
     protected Vector3 m_anchorOffsetPosition;
     protected float m_prevFlex;
-	protected OVRGrabbable m_grabbedObj = null;
+
+    ////////////////////////////////////////////////////////////////////////////////////////// MADE THIS PUBLIC
+	public OVRGrabbable m_grabbedObj = null;
+    ////////////////////////////////////////////////////////////////////////////////////////// Should probably eventually make an extension of this class
+
     protected Vector3 m_grabbedObjectPosOff;
     protected Quaternion m_grabbedObjectRotOff;
+
+
 	protected Dictionary<OVRGrabbable, int> m_grabCandidates = new Dictionary<OVRGrabbable, int>();
 	protected bool operatingWithoutOVRCameraRig = true;
 
@@ -69,6 +75,7 @@ public class OVRGrabber : MonoBehaviour
     {
         get { return m_grabbedObj; }
     }
+
 
 	public void ForceRelease(OVRGrabbable grabbable)
     {
@@ -119,7 +126,7 @@ public class OVRGrabber : MonoBehaviour
         }
     }
 
-	void FixedUpdate()
+	protected void FixedUpdate()
 	{
 		if (operatingWithoutOVRCameraRig)
 			OnUpdatedAnchors();
@@ -141,6 +148,7 @@ public class OVRGrabber : MonoBehaviour
         {
             MoveGrabbedObject(destPos, destRot);
         }
+        
         m_lastPos = transform.position;
         m_lastRot = transform.rotation;
 

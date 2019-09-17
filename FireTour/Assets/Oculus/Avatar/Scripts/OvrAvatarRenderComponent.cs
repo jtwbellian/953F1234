@@ -122,8 +122,11 @@ public class OvrAvatarRenderComponent : MonoBehaviour {
     {
         if (shader == null)
         {
-            throw new Exception("No shader provided for avatar material.");
+            //throw new Exception("No shader provided for avatar material.");
+            Debug.Log("Shader not found, defaulting");
+            shader = Shader.Find("Shader Graphs/shaderDefault");
         }
+
         Material mat = new Material(shader);
         mat.name = name;
         return mat;

@@ -8,6 +8,7 @@ public class AvatarController : MonoBehaviour
     public Transform headTarget = null;
     public Transform lhandTarget = null;
     public Transform rhandTarget = null;
+    public GameObject body = null;
 
     //private Animator rhandPose, lhandPose;
 
@@ -37,8 +38,18 @@ public class AvatarController : MonoBehaviour
         //lGrabber = lhandTarget.GetComponent<OVRGrabber>();
     }
 
+    public void SetBody(GameObject obj)
+    {
+        body = obj;
+    }
+    
     void Update()
     {
+        if (body)
+        {
+            body.transform.position = headTarget.position;
+            body.transform.rotation = Quaternion.Euler(0f, headTarget.rotation.eulerAngles.y, 0f);
+        }
         /* 
         // Hands disappear for rudder
         POVRGrabbable pgRight = rGrabber.m_grabbedObj as POVRGrabbable;

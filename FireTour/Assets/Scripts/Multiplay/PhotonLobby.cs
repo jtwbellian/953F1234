@@ -12,6 +12,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     private bool gameStarting = false;
     private bool hasHosted = false;
 
+
     public GameObject [] playButtons;
 
     public GameObject CancelButton;
@@ -70,12 +71,14 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
         attempt ++;
         Invoke("CreateRoom", 0.2f);
     }
+
     void CreateRoom()
     {
         string roomCode = GenerateRoomCode();
         RoomOptions roomOps = new RoomOptions(){IsVisible = true, IsOpen = true, MaxPlayers = (byte)maxPlayers};
         PhotonNetwork.CreateRoom(roomPrefix + roomCode, roomOps);
         codeField.text = roomCode;
+        DataField.dataField.roomCode = roomCode;
         Debug.Log("New session " + roomCode);
     }
 

@@ -407,6 +407,7 @@ namespace Photon.Voice.Unity
                     {
                         this.Logger.LogInfo("\"{0}\" is not a valid Photon microphone device, switching to default (-1)", this.photonMicrophoneDeviceId);
                     }
+                    
                     this.photonMicrophoneDeviceId = -1;
                 }
                 return this.photonMicrophoneDeviceId;
@@ -565,6 +566,12 @@ namespace Photon.Voice.Unity
                     }
                 }
             }
+        }
+
+        public void SetAudioClip(AudioClip clip)
+        {
+            audioClip = clip;
+            isRecording = true;
         }
 
         /// <summary>Loop playback for audio clip sources.</summary>

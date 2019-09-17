@@ -23,6 +23,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
     private int playerInGame;
     private bool hasSpawned = false;
     private bool hasLoaded = false;
+    private OVRScreenFade fader;
 
     private void Awake() 
     {
@@ -43,6 +44,11 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         DontDestroyOnLoad(this.gameObject);
     } 
 
+    public int GetPlayerCount()
+    {
+        return playersInRoom;
+    }
+
     public override void OnEnable() 
     {
         base.OnEnable();
@@ -62,7 +68,7 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         photonPlayers = PhotonNetwork.PlayerList;
         playersInRoom = photonPlayers.Length;
         myNumberInRoom = playersInRoom;
-        PhotonNetwork.NickName =  "Player " + myNumberInRoom.ToString();
+        
         //StartGame();
     }
 
@@ -76,6 +82,11 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
 
     void StartGame()
     {
+        fader = Camera.main.GetComponent<OVRScreenFade>();
+        
+        if (fader)
+            fader.FadeOut();
+
         if (!PhotonNetwork.IsMasterClient || hasLoaded)
         {
             return;
@@ -108,6 +119,8 @@ public class PhotonRoom : MonoBehaviourPunCallbacks, IInRoomCallbacks
         var obj = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "PhotonNetworkPlayer"), new Vector3(0, 4f, -1.5f), Quaternion.identity, 0);
         PhotonPlayer player = obj.GetComponent<PhotonPlayer>();
         player.myName = LoginManager.GetInstance().GetUser();
+        DataField.dataField.userName =  player.myName;
+        PhotonNetwork.NickName =  player.myName;
         hasSpawned = true;
     }
 }

@@ -22,6 +22,7 @@ public class VRPlayerController : MonoBehaviour//OVRPlayerController
     {
         fade = GetComponentInChildren<OVRScreenFade>();
         character = GetComponent<CharacterController>();
+        character.SimpleMove(Vector3 .forward  * 0);
     }
 
     // Update is called once per frame
@@ -33,9 +34,8 @@ public class VRPlayerController : MonoBehaviour//OVRPlayerController
         character.enabled = true;
         
         // Walk
-        Vector2 stickInput = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
-
-        character.SimpleMove((trackingPoint.forward  * stickInput.y * speed) + (trackingPoint.right * stickInput.x * speed));
+        //Vector2 stickInput = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
+        //character.SimpleMove((trackingPoint.forward  * stickInput.y * speed) + (trackingPoint.right * stickInput.x * speed));
 
         // Turn View Left
         if (OVRInput.Get(OVRInput.Button.SecondaryThumbstickLeft))

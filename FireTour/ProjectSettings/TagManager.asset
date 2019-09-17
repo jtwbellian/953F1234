@@ -8,6 +8,9 @@ TagManager:
   - actor
   - location
   - action
+  - ExcludeTeleport
+  - Bullet
+  - TeleportIgnore
   layers:
   - Default
   - TransparentFX
@@ -21,7 +24,7 @@ TagManager:
   - Surface
   - Interior
   - Obstacle
-  - 
+  - Probes
   - 
   - 
   - 

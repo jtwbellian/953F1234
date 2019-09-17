@@ -72,7 +72,7 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: ec15c0a6438bce5419cbae4d46007668,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.69
+      value: 0.02
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: ec15c0a6438bce5419cbae4d46007668,
         type: 3}
@@ -129,20 +129,80 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8193742710604261252, guid: ec15c0a6438bce5419cbae4d46007668,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193742710604261252, guid: ec15c0a6438bce5419cbae4d46007668,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193742710604261252, guid: ec15c0a6438bce5419cbae4d46007668,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193742710604261252, guid: ec15c0a6438bce5419cbae4d46007668,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193742710604261252, guid: ec15c0a6438bce5419cbae4d46007668,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8193742710604261252, guid: ec15c0a6438bce5419cbae4d46007668,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -1526023099009119008, guid: ec15c0a6438bce5419cbae4d46007668,
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -1526023099009119008, guid: ec15c0a6438bce5419cbae4d46007668,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1526023099009119008, guid: ec15c0a6438bce5419cbae4d46007668,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -1526023099009119008, guid: ec15c0a6438bce5419cbae4d46007668,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1526023099009119008, guid: ec15c0a6438bce5419cbae4d46007668,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1526023099009119008, guid: ec15c0a6438bce5419cbae4d46007668,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -1526023099009119008, guid: ec15c0a6438bce5419cbae4d46007668,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5551014577142218206, guid: ec15c0a6438bce5419cbae4d46007668,
         type: 3}
       propertyPath: m_LODs.Array.data[1].screenRelativeHeight
-      value: 0.028026063
+      value: 0.0012461311
       objectReference: {fileID: 0}
     - target: {fileID: 5551014577142218206, guid: ec15c0a6438bce5419cbae4d46007668,
         type: 3}
       propertyPath: m_LODs.Array.data[0].screenRelativeHeight
-      value: 0.08353017
+      value: 0.05292961
       objectReference: {fileID: 0}
     - target: {fileID: 5551014577142218206, guid: ec15c0a6438bce5419cbae4d46007668,
         type: 3}
@@ -185,21 +245,6 @@ PrefabInstance:
       value: HouseA_TILES
       objectReference: {fileID: 0}
     - target: {fileID: -927199367670048503, guid: aa8ba7edfaf0c2340a6505aae3e26ab8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: -4234446299781532939, guid: aa8ba7edfaf0c2340a6505aae3e26ab8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 3498133365065941369, guid: aa8ba7edfaf0c2340a6505aae3e26ab8,
-        type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: -4827013160443184540, guid: aa8ba7edfaf0c2340a6505aae3e26ab8,
         type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
@@ -274,6 +319,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: aa8ba7edfaf0c2340a6505aae3e26ab8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 68535a5dba870f6479c02492c3ea1450, type: 2}
+    - target: {fileID: -4234446299781532939, guid: aa8ba7edfaf0c2340a6505aae3e26ab8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 3498133365065941369, guid: aa8ba7edfaf0c2340a6505aae3e26ab8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: -4827013160443184540, guid: aa8ba7edfaf0c2340a6505aae3e26ab8,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     - target: {fileID: 5551014577142218206, guid: aa8ba7edfaf0c2340a6505aae3e26ab8,
         type: 3}
       propertyPath: m_LODs.Array.data[1].screenRelativeHeight
@@ -300,11 +365,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 68535a5dba870f6479c02492c3ea1450, type: 2}
     - target: {fileID: 7106304047857704315, guid: aa8ba7edfaf0c2340a6505aae3e26ab8,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 68535a5dba870f6479c02492c3ea1450, type: 2}
-    - target: {fileID: -1504981713932161579, guid: aa8ba7edfaf0c2340a6505aae3e26ab8,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

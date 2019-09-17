@@ -59,7 +59,7 @@ public class FireProbe : MonoBehaviour
         if (activeOnStart)
             TurnOn();
 
-        randomOffset = new Vector3(Random.Range(-0.2f, 0.2f),  Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f));
+        randomOffset = new Vector3(0, 0, 0); //Vector3(Random.Range(-0.05f, 0.05f),  Random.Range(-0.05f, 0.05f), Random.Range(-0.05f, 0.05f));
     }
 
      [ContextMenu("Light")]
@@ -91,7 +91,8 @@ public class FireProbe : MonoBehaviour
                     //shellList contains several integers that each reference a particular vertex in the mesh.
                     //This for loop is cycling through each of these integers and matching them up with their 
                     //equivalent counterparts in the array of mesh vertex colors.  
-                    fm.SetVertexColor(shellList[i], Color.red);
+                    if (lit)
+                        fm.SetVertexColor(shellList[i], Color.red);
                 }
             }
             //grow the probe
@@ -107,7 +108,7 @@ public class FireProbe : MonoBehaviour
     {
         while (lit)
         {
-            randomOffset = new Vector3(Random.Range(-0.2f, 0.2f),  Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f));
+            //randomOffset = new Vector3(Random.Range(-0.2f, 0.2f),  Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f));
             fx.Burst(fireType, transform.position + randomOffset, fm.windHorn.windSpeed, num);
             fx.Burst(smokeType, transform.position + randomOffset, fm.windHorn.windSpeed, num);
             yield return new WaitForSeconds(updateTime);

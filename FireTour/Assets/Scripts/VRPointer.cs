@@ -31,7 +31,7 @@ public class VRPointer : MonoBehaviour {
     void Start () 
     {
         cursor = Instantiate(cursor);
-        cursorMesh = cursor.GetComponent<Renderer>();
+        cursorMesh = cursor.GetComponentInChildren<Renderer>();
 
         if (canTeleport)
         {

@@ -12,7 +12,6 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
     private bool gameStarting = false;
     private bool hasHosted = false;
 
-
     public GameObject [] playButtons;
 
     public GameObject CancelButton;
@@ -111,6 +110,7 @@ public class PhotonLobby : MonoBehaviourPunCallbacks
 
         PhotonNetwork.JoinRoom(roomPrefix + room);
         gameStarting = true;
+        DataField.dataField.roomCode = room;
     }
 
     public void OnHost()

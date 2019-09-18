@@ -91,7 +91,9 @@ public class FireManager : MonoBehaviour
         {
             if (probeUpdate != null)
                 probeUpdate.Invoke();
-                
+
+            mesh.SetColors(vertColorList);
+
             yield return new WaitForSeconds(timeToDouble);
         }
 
@@ -100,11 +102,7 @@ public class FireManager : MonoBehaviour
 
     public void SetVertexColor(int index, Color color)
     {
-        //mesh = targetMesh.sharedMesh;
         vertColorList[index] = color;
-        //Debug.Log("Changed one vertex color " + index);
-        mesh.SetColors(vertColorList);
-        //mesh.colors[index] = color;
     }
 
     [ContextMenu("Collect All Probes")]
@@ -156,49 +154,45 @@ public class FireManager : MonoBehaviour
     void Catalog()
     {
         mesh = targetMesh.sharedMesh;
-        //Matrix4x4 localToWorld = transform.localToWorldMatrix;
-
         //Create empty array of proper size to manage mesh Vertex count
-
         Vector3[] vertPos = new Vector3[mesh.vertices.Length];
 
         //Find the worldspace equivalent of every vertex location. 
         //Then, add that location to our vertLocs array. 
-
         for(int i = 0; i < mesh.vertices.Length; ++i)
         {
             Vector3 world_v = mesh.vertices[i]; //localToWorld.MultiplyPoint3x4(mesh.vertices[i]);
             vertPos[i] = world_v + new Vector3(-2.69f, 0.0568691f, 20.52f); //+ targetMesh.transform.position;
             Debug.Log("Index: " + i.ToString() + "  Worldspace Location:" + vertPos[i].ToString());
-
-            /*if (i < 2000)
-            {            
-                var obj = Instantiate(testPoint);
-                obj.transform.position = vertPos[i];
-                //obj.transform.SetParent(testPoint.transform);
-            }*/
         }
 
             //Delegate vertex points to each Node
         foreach (var probe in probes)
         {
-            //Debug.Log("Probe " + probe.ToString());
-            int i = 0;
             var currentShellGroup = new List<int>();
-            //Debug.Log("This is Vertpos Length: " + vertPos.Length.ToString());
+            for(int i = 0; i < FireProbe.shellCount; i++) //For all shells
+            {
+                for(int j = 0; j < vertPos.Length; j++) //For one specific shell
+                {
 
-            for(int k = 0; k < vertPos.Length; k++)
-                {//Debug.Log("Checking vertex " + k.ToString());
-
-                    if (Vector3.Distance(probe.transform.position, vertPos[k]) < probe.trigger.radius)
+                    if (Vector3.Distance(probe.transform.position, vertPos[j]) < probe.trigger.radius)
                     {
-                        currentShellGroup.Add(k);
-                        //Debug.Log("Probe " + probe.ToString() + " was given Vertex "  + k.ToString());
+                        currentShellGroup.Add(j);
                     }
                 }
 
-            probe.VertexGroup[i] = currentShellGroup;
-            Debug.Log("Probe " + probe.ToString() + "was given " + probe.VertexGroup[i].ToString());
+                if (i > 0)
+                for(int j = 0; j < currentShellGroup.Count-1; j++) //Clean out duplicates
+                {
+                    if (currentShellGroup[j] == currentShellGroup[j-1])
+                    {
+                       currentShellGroup.Remove(j);
+                    }
+                }
+
+                probe.VertexGroup[i] = currentShellGroup;
+            }
+
         }
         
         }

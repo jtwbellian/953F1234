@@ -23,7 +23,7 @@ public class FireProbe : MonoBehaviour
 
     public int shellIndex = 0;
 
-    public List<int>[] VertexGroup = new List<int>[(shellCount)];
+    public List<int>[] VertexGroup = new List<int>[shellCount];
 
     public FXManager.PType fireType = FXManager.PType.Flame1;
     public FXManager.PType smokeType = FXManager.PType.Smoke1;
@@ -79,27 +79,29 @@ public class FireProbe : MonoBehaviour
 
     // Refresh
     public void Grow()
-    {
+    {//Debug.Log("I have grown.");
         if (trigger.radius < MAX_RADIUS)
         {
-            List<int> shellList = VertexGroup[shellIndex];
-
-            if (shellList != null)
+            List<int> shellList = new List<int>(VertexGroup[shellIndex]);
+            //Debug.Log("I have assigned my shell and it contains..." + shellList.ToString());
+            if (shellList.Count > 0)
             {
+                Debug.Log("Shell List is NOT null. Proceeding...");
                 for (int i = 0; i < shellList.Count; ++i)
                 {
                     //shellList contains several integers that each reference a particular vertex in the mesh.
                     //This for loop is cycling through each of these integers and matching them up with their 
                     //equivalent counterparts in the array of mesh vertex colors.  
-                    if (lit)
-                        fm.SetVertexColor(shellList[i], Color.red);
+                    //if (lit)
+                        Debug.Log("Attempting to change color...");
+                        fm.SetVertexColor(shellList[i], Color.black);
                 }
             }
             //grow the probe
             trigger.radius = trigger.radius * growRate;
-            //prep the next shell for the next Refresh.
-            if (shellIndex<shellCount)
-                shellIndex+=1;
+            //prep the next shell for the next Refresh. Put these next two lines back in once multiple shells are baked
+            //if (shellIndex<shellCount)
+                //shellIndex+=1;
         }
 
     }

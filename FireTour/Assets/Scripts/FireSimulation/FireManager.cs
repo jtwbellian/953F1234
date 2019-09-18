@@ -16,6 +16,8 @@ public class FireManager : MonoBehaviour
     [SerializeField, Range(0.01f, 50f)]
     private float timeToDouble = 30f;
 
+    private List<Color32> vertColorList;
+
 
     ////////////////////////////////////////////
     public GameObject testPoint = null;
@@ -54,6 +56,12 @@ public class FireManager : MonoBehaviour
     void Start()
     {
         fx = FXManager.GetInstance();
+        mesh = targetMesh.sharedMesh;
+        vertColorList = new List<Color32>();
+        //prepare blank color list
+        for (int i = 0; i < mesh.vertexCount; i++)
+            vertColorList.Add(Color.white);
+        Catalog();
         StartCoroutine("SpreadFire");
     }
 
@@ -92,7 +100,11 @@ public class FireManager : MonoBehaviour
 
     public void SetVertexColor(int index, Color color)
     {
-        mesh.colors[index] = color;
+        //mesh = targetMesh.sharedMesh;
+        vertColorList[index] = color;
+        //Debug.Log("Changed one vertex color " + index);
+        mesh.SetColors(vertColorList);
+        //mesh.colors[index] = color;
     }
 
     [ContextMenu("Collect All Probes")]
@@ -104,6 +116,40 @@ public class FireManager : MonoBehaviour
         {
             probe.Start();
         }
+    }
+
+    [ContextMenu("Force Verts to Burnt")]
+
+    void ColorVert()
+    {
+    mesh = targetMesh.sharedMesh;
+    List<Color32> newClr = new List<Color32>();
+            for (int i = 0; i < mesh.vertexCount; i++)
+            {
+                newClr.Add(Color.black);
+            }
+    mesh.SetColors(newClr);
+    }
+
+
+        [ContextMenu("Force Verts to Clean")]
+
+    void BlankVert()
+    {
+    mesh = targetMesh.sharedMesh;
+    Color[] colors = new Color[mesh.vertices.Length];
+    List<Color32> newClr = new List<Color32>();
+            for (int i = 0; i < mesh.vertexCount; i++)
+            {
+                newClr.Add(Color.white);
+            }
+    mesh.SetColors(newClr);
+    /* 
+    for (int l = 0; l < mesh.vertices.Length; l++)
+        {
+        colors[l] = Color.red;
+        }
+    mesh.colors = colors;*/
     }
 
     [ContextMenu("Bake Vertex Catalog")]
@@ -136,22 +182,23 @@ public class FireManager : MonoBehaviour
             //Delegate vertex points to each Node
         foreach (var probe in probes)
         {
-            Debug.Log("Probe " + probe.ToString());
+            //Debug.Log("Probe " + probe.ToString());
             int i = 0;
             var currentShellGroup = new List<int>();
-            Debug.Log("This is Vertpos Length: " + vertPos.Length.ToString());
+            //Debug.Log("This is Vertpos Length: " + vertPos.Length.ToString());
 
             for(int k = 0; k < vertPos.Length; k++)
-                {Debug.Log("Checking vertex " + k.ToString());
+                {//Debug.Log("Checking vertex " + k.ToString());
 
                     if (Vector3.Distance(probe.transform.position, vertPos[k]) < probe.trigger.radius)
                     {
                         currentShellGroup.Add(k);
-                        Debug.Log("Probe " + probe.ToString() + " was given Vertex "  + k.ToString());
+                        //Debug.Log("Probe " + probe.ToString() + " was given Vertex "  + k.ToString());
                     }
                 }
 
             probe.VertexGroup[i] = currentShellGroup;
+            Debug.Log("Probe " + probe.ToString() + "was given " + probe.VertexGroup[i].ToString());
         }
         
         }

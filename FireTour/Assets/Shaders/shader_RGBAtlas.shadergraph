@@ -59,6 +59,12 @@
                 "fullName": "UnityEditor.ShaderGraph.Vector1ShaderProperty"
             },
             "JSONnodeData": "{\n    \"m_Name\": \"BurnScale\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"3e4eb729-f0cd-4373-9b9c-76b2cab4bb91\"\n    },\n    \"m_DefaultReferenceName\": \"Vector1_E9BDB114\",\n    \"m_OverrideReferenceName\": \"_burnscale\",\n    \"m_Value\": 1.0,\n    \"m_FloatType\": 1,\n    \"m_RangeValues\": {\n        \"x\": 0.0,\n        \"y\": 100.0\n    },\n    \"m_Hidden\": false\n}"
+        },
+        {
+            "typeInfo": {
+                "fullName": "UnityEditor.ShaderGraph.BooleanShaderProperty"
+            },
+            "JSONnodeData": "{\n    \"m_Name\": \"Wave\",\n    \"m_GeneratePropertyBlock\": true,\n    \"m_Guid\": {\n        \"m_GuidSerialized\": \"cc06ceab-5d0f-4309-b4f5-776e6465a035\"\n    },\n    \"m_DefaultReferenceName\": \"Boolean_670311B3\",\n    \"m_OverrideReferenceName\": \"_wave\",\n    \"m_Value\": false\n}"
         }
     ],
     "m_GUID": {

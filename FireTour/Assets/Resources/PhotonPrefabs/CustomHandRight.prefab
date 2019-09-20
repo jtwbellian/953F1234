@@ -1122,6 +1122,10 @@ GameObject:
   - component: {fileID: 945208981162424488}
   - component: {fileID: 6677724742004830045}
   - component: {fileID: 7062998221337279172}
+  - component: {fileID: 2590672741294346550}
+  - component: {fileID: -1615540612536597446}
+  - component: {fileID: 5046163755158714989}
+  - component: {fileID: 7080897398936169698}
   m_Layer: 0
   m_Name: CustomHandRight
   m_TagString: Untagged
@@ -1169,7 +1173,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 945208981152693062}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d1d852121abcb394bb47da89b88b3f2f, type: 3}
   m_Name: 
@@ -1237,6 +1241,145 @@ MonoBehaviour:
   m_SynchronizePosition: 1
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
+--- !u!114 &2590672741294346550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945208981152693062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c52b3a0d5f4fd744bbbd135b8d647b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerType: 5
+  setFingersForControllerType: 1
+  mirrorModel: 0
+  animationSnapSpeed: 0.1
+  thumbButton: 9
+  indexButton: 3
+  middleButton: 0
+  ringButton: 0
+  pinkyButton: 0
+  threeFingerButton: 7
+  thumbAxisButton: 7
+  indexAxisButton: 5
+  middleAxisButton: 9
+  ringAxisButton: 10
+  pinkyAxisButton: 11
+  threeFingerAxisButton: 2
+  thumbState: 0
+  indexState: 0
+  middleState: 0
+  ringState: 0
+  pinkyState: 0
+  threeFingerState: 0
+  nearTouchOverrides:
+    ignoreAllOverrides: 1
+    stateValue: -1
+    applyThumbOverride: 1
+    thumbOverride: 0
+    applyIndexOverride: 1
+    indexOverride: 0
+    applyMiddleOverride: 1
+    middleOverride: 0
+    applyRingOverride: 1
+    ringOverride: 0
+    applyPinkyOverride: 1
+    pinkyOverride: 0
+  touchOverrides:
+    ignoreAllOverrides: 1
+    stateValue: -1
+    applyThumbOverride: 1
+    thumbOverride: 0
+    applyIndexOverride: 1
+    indexOverride: 0
+    applyMiddleOverride: 1
+    middleOverride: 0
+    applyRingOverride: 1
+    ringOverride: 0
+    applyPinkyOverride: 1
+    pinkyOverride: 0
+  grabOverrides:
+    ignoreAllOverrides: 1
+    stateValue: -1
+    applyThumbOverride: 1
+    thumbOverride: 0
+    applyIndexOverride: 1
+    indexOverride: 0
+    applyMiddleOverride: 1
+    middleOverride: 0
+    applyRingOverride: 1
+    ringOverride: 0
+    applyPinkyOverride: 1
+    pinkyOverride: 0
+  useOverrides:
+    ignoreAllOverrides: 1
+    stateValue: -1
+    applyThumbOverride: 1
+    thumbOverride: 0
+    applyIndexOverride: 1
+    indexOverride: 0
+    applyMiddleOverride: 1
+    middleOverride: 0
+    applyRingOverride: 1
+    ringOverride: 0
+    applyPinkyOverride: 1
+    pinkyOverride: 0
+  handModel: {fileID: 0}
+  controllerEvents: {fileID: 0}
+  interactNearTouch: {fileID: 7080897398936169698}
+  interactTouch: {fileID: -1615540612536597446}
+  interactGrab: {fileID: 5046163755158714989}
+  interactUse: {fileID: 0}
+--- !u!114 &-1615540612536597446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945208981152693062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64e104da36bd3b04b90c6ae969ac66dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customColliderContainer: {fileID: 945208981152670326}
+--- !u!114 &5046163755158714989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945208981152693062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947b27445602ed640b885db7e667dfc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grabButton: 7
+  grabPrecognition: 0
+  throwMultiplier: 1
+  createRigidBodyWhenNotTouching: 0
+  controllerAttachPoint: {fileID: 0}
+  controllerEvents: {fileID: 0}
+  interactTouch: {fileID: 0}
+--- !u!114 &7080897398936169698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 945208981152693062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eda201177cd508f49849386d157bdd39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  colliderRadius: 0.2
+  customColliderContainer: {fileID: 0}
+  interactTouch: {fileID: -1615540612536597446}
 --- !u!1 &945208981152752526
 GameObject:
   m_ObjectHideFlags: 0

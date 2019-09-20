@@ -225,13 +225,15 @@ namespace VRTK
         protected virtual void OnEnable()
         {
             animator = GetComponent<Animator>();
-            controllerEvents = (controllerEvents != null ? controllerEvents : GetComponentInParent<VRTK_ControllerEvents>());
+            //controllerEvents = (controllerEvents != null ? controllerEvents : GetComponentInParent<VRTK_ControllerEvents>());
             interactNearTouch = (interactNearTouch != null ? interactNearTouch : GetComponentInParent<VRTK_InteractNearTouch>());
             interactTouch = (interactTouch != null ? interactTouch : GetComponentInParent<VRTK_InteractTouch>());
             interactGrab = (interactGrab != null ? interactGrab : GetComponentInParent<VRTK_InteractGrab>());
             interactUse = (interactUse != null ? interactUse : GetComponentInParent<VRTK_InteractUse>());
 
+            controllerEvents = GameObject.Find("ControllerEvents").GetComponent<VRTK_ControllerEvents>();
             controllerReference = VRTK_ControllerReference.GetControllerReference(controllerEvents.gameObject);
+            //VRTK_ControllerReference.GetControllerReference(controllerEvents.gameObject);
         }
 
         protected virtual void OnDisable()
@@ -568,6 +570,7 @@ namespace VRTK
         {
             animator.SetFloat(state, -1f);
         }
+
 
         protected virtual void DoControllerNearTouch(object sender, ObjectInteractEventArgs e)
         {

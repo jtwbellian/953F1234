@@ -23,7 +23,7 @@ public class VRPointer : MonoBehaviour {
 
     [Range(0.001f, 3f)]
     public float selectTime = 1f;
-    private Renderer cursorMesh = null;
+    private UICircleFill UICircle = null;
     [ReadOnly]
     public float wait = 0f;
     
@@ -31,7 +31,7 @@ public class VRPointer : MonoBehaviour {
     void Start () 
     {
         cursor = Instantiate(cursor);
-        cursorMesh = cursor.GetComponentInChildren<Renderer>();
+        UICircle = cursor.GetComponentInChildren<UICircleFill>();
 
         if (canTeleport)
         {
@@ -137,13 +137,13 @@ public class VRPointer : MonoBehaviour {
             wait += selectTime * Time.deltaTime;
             //Debug.Log("( " + wait + " ) waiting " + selectTime / Time.deltaTime);
 
-            cursorMesh.material.SetFloat("_ColorRampOffset", Mathf.Clamp(1f - wait, 0.01f, 0.98f));
+            UICircle.SetFillAmount(wait);
         }
         else
         if (wait < 1f && wait > 0f) // The input wait tolerance (80% of ring full)
         {
             wait -= selectTime * Time.deltaTime;
-            cursorMesh.material.SetFloat("_ColorRampOffset", Mathf.Clamp(1f - wait, 0.01f, 0.98f));
+            UICircle.SetFillAmount(wait);
             return;
         }
 
@@ -190,7 +190,7 @@ public class VRPointer : MonoBehaviour {
             wait = 0;
         }
 
-        cursorMesh.material.SetFloat("_ColorRampOffset", Mathf.Clamp(1f - wait, 0.01f, 0.98f));
+        UICircle.SetFillAmount(wait);
     }
 
     [ContextMenu("teleport")]

@@ -57,11 +57,20 @@ public class PhotonPlayer : MonoBehaviour
 
             phead.SetName(userName[0]);
 
-            POVRGrabber grabberL = handL.GetComponent<POVRGrabber>();
-            POVRGrabber grabberR = handR.GetComponent<POVRGrabber>();
+            //POVRGrabber grabberL = handL.GetComponent<POVRGrabber>();
+            //POVRGrabber grabberR = handR.GetComponent<POVRGrabber>();
 
-            grabberL.SetParentTransform(player.transform);
-            grabberR.SetParentTransform(player.transform);
+            //grabberL.SetParentTransform(player.transform);
+            //grabberR.SetParentTransform(player.transform);
+
+            handR.transform.SetParent(avController.rhandTarget);
+            handR.transform.localPosition = Vector3.zero;
+            handR.transform.localRotation = Quaternion.identity;
+
+            
+            handL.transform.SetParent(avController.lhandTarget);
+            handL.transform.localPosition = Vector3.zero;
+            handL.transform.localRotation = Quaternion.identity;
 
 /*
             parts = myAvatar.GetComponent<AvatarParts>();

@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 using Photon.Pun;
+using Photon.Voice.Unity;
 using Photon.Voice.PUN;
 using Photon;
 
 public class PhotonPlayer : MonoBehaviour
 {
     PhotonView PV;
-    PhotonVoiceNetwork voiceNetwork;
+
     private AvatarController avController;
     public GameObject playerController;
     private AvatarParts parts;
@@ -19,7 +20,6 @@ public class PhotonPlayer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        voiceNetwork = GetComponent<PhotonVoiceNetwork>();
         PV = GetComponent<PhotonView>();
         Debug.Log("PV set to " + PV);
 
@@ -37,6 +37,10 @@ public class PhotonPlayer : MonoBehaviour
                                     Vector3.zero, 
                                     Quaternion.identity, 0);
 
+            var body = PhotonNetwork.Instantiate(Path.Combine("PhotonPrefabs", "Body"),
+                                    Vector3.zero, 
+                                    Quaternion.identity, 0);
+
             var player = Instantiate(playerController);
 
             Debug.Log("created player object: " + player);
@@ -44,6 +48,8 @@ public class PhotonPlayer : MonoBehaviour
             avController = player.GetComponent<AvatarController>();
 
             head.transform.SetParent(avController.headTarget);
+            body.transform.SetParent(player.transform);
+            avController.SetBody(body);
 
             PhotonHead phead = head.GetComponent<PhotonHead>();
 
@@ -75,6 +81,13 @@ public class PhotonPlayer : MonoBehaviour
             parts.LHand.localRotation = Quaternion.identity;
             parts.LHand.localPosition = Vector3.zero;
             */
+
+            var recorder = GetComponent<Recorder>();
+
+            recorder.PhotonMicrophoneDeviceId = 0;
+            recorder.TransmitEnabled = true;
+            //recorder.SetAudioClip(Microphone.Start(Microphone.devices[0], true, 2, AudioSettings.outputSampleRate));
+
         }
     }
 

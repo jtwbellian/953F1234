@@ -3,7 +3,7 @@ Shader "OVRColorRampAlpa" {
 		_Color ("Main Color", Color ) = (1,1,1,1)
 		_MainTex ("Diffuse (RGB) AlphaMask (A)", 2D) = "white" {}
 		_ColorRamp ("Color Ramp (A)", 2D) = "white" {}
-		_ColorRampOffset ("Color Ramp Offset", Range(0.02,0.97)) = 0.0
+		_ColorRampOffset ("Color Ramp Offset", Range(0.01,0.99)) = 0.0
 	}
 	
 Category {

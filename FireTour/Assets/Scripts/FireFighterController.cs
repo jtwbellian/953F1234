@@ -8,6 +8,7 @@ public class FireFighterController : MonoBehaviour
     public Animator animator;
     private Transform myDestination;
 
+
     public delegate void OnDestinationDelegate();
     public static OnDestinationDelegate onDestinationArrived; 
 

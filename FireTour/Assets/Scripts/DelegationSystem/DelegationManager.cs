@@ -12,6 +12,7 @@ public class DelegationManager : MonoBehaviour
     private static DelegationManager _instance;
     public static DelegationManager Instance { get { return _instance; } }
     public ActorManager actorManager;
+    public DelegationMenu menu;
     public int assigneeId = -1;
 
     private void Awake()
@@ -24,8 +25,13 @@ public class DelegationManager : MonoBehaviour
         }
     }
 
-    private void start(){
-        actorManager = GameObject.FindObjectOfType<ActorManager>();
+    private void start()
+    {
+        if (!actorManager)
+            actorManager = GameObject.FindObjectOfType<ActorManager>();
+
+        if (!menu)
+            menu = GameObject.FindObjectOfType<DelegationMenu>();
     }
 
 

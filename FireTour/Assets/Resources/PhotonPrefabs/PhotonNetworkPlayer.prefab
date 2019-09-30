@@ -267,7 +267,6 @@ MonoBehaviour:
   logLevel: 1
   enableSupportLogger: 0
   updateInterval: 50
-  runInBackground: 1
   statsResetInterval: 1000
   speakerPrefab: {fileID: 0}
   Settings:

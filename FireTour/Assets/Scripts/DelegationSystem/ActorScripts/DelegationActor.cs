@@ -26,7 +26,11 @@ public class DelegationActor : MonoBehaviour
         // use the globale game event system to do something.
         // globalEventSystem.Quit += resetAssignments;
 
-    }
+        // Added init function for inheriting actors
+        Init();
+    }    
+    
+    public virtual void Init(){}
 
     /// <summary>
     /// Creates a range of values from 0-2. 2 being completely ready and 1 not being ready at

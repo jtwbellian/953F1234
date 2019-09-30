@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 
-public class CharacterButton : MonoBehaviour
+public class CharacterButton : VRButton
 {
     public Image avatar;
     public TextMeshProUGUI _name;
@@ -13,18 +13,38 @@ public class CharacterButton : MonoBehaviour
     public TextMeshProUGUI _action;
     public UICircleFill progressMeter;
 
+    public DelegationMenu delegationMenu;
+
+    public FireFighter actor;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        delegationMenu = GetComponentInParent<DelegationMenu>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetSource(FireFighter source)
     {
-        
+        name = source.name + "Button";
+        actor = source;
+        _name.text = source.name;
     }
 
+    public void SetImage(Sprite sprite)
+    {
+        avatar.sprite = sprite; 
+    }
 
-
+    public void SelectCharacter()
+    {
+        delegationMenu.ClearSelection();
+        delegationMenu.SetActionPanel(true);
+        delegationMenu.SetTab(0);
+        delegationMenu.currentCharacter.text = actor.name;
+        delegationMenu.currentCharacterState.text = "";
+        DelegationManager.Instance.Selection(actor.gameObject);
+        actor.SetOutline(true);
+        progressMeter.SetRing(true);
+    }
 }

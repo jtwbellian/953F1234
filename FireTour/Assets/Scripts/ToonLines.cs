@@ -21,9 +21,24 @@ public class ToonLines : MonoBehaviour
 {
     private MeshFilter sourceMesh;
     private GameObject toonline;
+    
+    public SkinnedMeshRenderer sourceSkinnedMesh = null;
+
+    public bool animated = false;
 
     public Color color;
     public float width = 0.01f;
+
+    public void Start()
+    {
+        GenerateToonLines();
+        DisableLine();
+    }
+
+    public GameObject GetLine()
+    {
+        return toonline;
+    }
 
     // Claytons Flip normal function
     private void Flip(Mesh mesh)
@@ -79,41 +94,82 @@ public class ToonLines : MonoBehaviour
     {
         //delete existing toonLine
         Transform oldLine = gameObject.transform.Find("toonLine");
-        sourceMesh = GetComponent<MeshFilter>();
-
-        if (sourceMesh == null)
-        {
-            Debug.Log("Error: Source mesh could not be found. Ensure there is a Mesh Filter component above!");
-            return;
-        }
-
-        Mesh oldMesh = Instantiate(sourceMesh.sharedMesh);
-        RecalculateNormals(oldMesh, 180f);
 
         if (oldLine != null)
         {
             DestroyImmediate(oldLine.gameObject);
         }
 
+        sourceMesh = GetComponent<MeshFilter>();
+
+        if (sourceMesh == null && sourceSkinnedMesh == null)
+        {
+            Debug.Log("Error: Source mesh could not be found. Ensure there is a Mesh Filter component above, or override the mesh.");
+            return;
+        }
+
+        Mesh oldMesh;
+
+        if (sourceSkinnedMesh == null) // if there is no sourceSkinnedMesh, use the extracted source mesh
+        {
+            oldMesh = Instantiate(sourceMesh.sharedMesh);
+        }
+        else
+        {
+            oldMesh = Instantiate(sourceSkinnedMesh.sharedMesh);
+        }
+ 
+        RecalculateNormals(oldMesh, 180f);
+
         toonline = new GameObject("toonLine");
 
-        var meshRenderer = toonline.AddComponent<MeshRenderer>();
-        var meshFilter = toonline.AddComponent<MeshFilter>();
+        MeshRenderer meshRenderer = null;
+        SkinnedMeshRenderer skinMeshRenderer = null;
+
+        if (animated) 
+        {
+            skinMeshRenderer = toonline.AddComponent<SkinnedMeshRenderer>();
+            skinMeshRenderer.bones = sourceSkinnedMesh.bones;
+
+        }
+        else
+        {
+            meshRenderer = toonline.AddComponent<MeshRenderer>();            
+        } 
 
         Material mat = new Material(Shader.Find("Unlit/Color"));
         mat.color = color;
-
-        meshRenderer.sharedMaterial = mat;
 
         var newMesh = Inflate(oldMesh, width);
 
         Flip(newMesh);
 
-        meshFilter.sharedMesh = newMesh;
+        if (animated) 
+        {
+            Material [] newMats = skinMeshRenderer.sharedMaterials;
+
+            for(int i = 0; i < newMats.Length; i ++)
+            {
+                newMats[i] = mat;
+            } 
+
+            newMesh.bindposes = sourceSkinnedMesh.sharedMesh.bindposes;
+            newMesh.boneWeights = sourceSkinnedMesh.sharedMesh.boneWeights;
+
+            skinMeshRenderer.sharedMaterials = newMats;
+            skinMeshRenderer.sharedMesh = newMesh;
+        }
+        else // Add mesh filter for static mesh
+        {
+            meshRenderer.sharedMaterial = mat;
+            var meshFilter = toonline.AddComponent<MeshFilter>();
+            meshFilter.sharedMesh = newMesh;
+        }
+
 
         toonline.transform.rotation = transform.rotation;
         toonline.transform.localScale = transform.localScale;
-        toonline.transform.parent = transform;
+        toonline.transform.SetParent(transform);
         toonline.transform.localPosition = Vector3.zero;
 
         DestroyImmediate(oldMesh);

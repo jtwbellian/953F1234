@@ -12,7 +12,14 @@ public class SetHead : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-      for (int i = 0; i < allHeads.Length; i++)
+        UpdateHead();
+    }
+
+    // Dan, moved your code from the start function so I could use this in editor
+    [ContextMenu("Update Head")]
+    public void UpdateHead()
+    {
+        for (int i = 0; i < allHeads.Length; i++)
         {
             if (i == headIndex)
             {
@@ -24,5 +31,4 @@ public class SetHead : MonoBehaviour
             }
         }
     }
-
 }

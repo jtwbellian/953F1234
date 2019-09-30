@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class ActSearch : DelegationAction
 {
-    public Transform entrance;
+    private string targetLocation = "Door";
+    private Transform entrance = null;
+    private FireFighter fireFighter;
 
-    // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
+        if (DelegationManager.Instance.menu.locations.ContainsKey(targetLocation))
+            entrance = DelegationManager.Instance.menu.locations[targetLocation];
     }
 
     public override void startAction(GameObject actor){

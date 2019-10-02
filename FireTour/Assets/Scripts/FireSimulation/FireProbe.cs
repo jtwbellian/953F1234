@@ -9,8 +9,8 @@ public class FireProbe : MonoBehaviour
 
     private int num = 1;
     private bool lit = false;
-    private const float growRate = 0.25f;
-    private const float startRadius = 1f;
+    private const float growRate = 1.2f;
+    private const float startRadius = 0.5f;
     private FireManager fm;
     private FXManager fx;
     public SphereCollider trigger;
@@ -100,7 +100,7 @@ public class FireProbe : MonoBehaviour
 
         if (shellList.Count > 0)
         {        
-            for (int i = 0; i < shellList.Count; ++i)
+            for (int i = 0; i < shellList.Count-1; ++i)
             {
                 //shellList contains several integers that each reference a particular vertex in the mesh.
                 //This for loop is cycling through each of these integers and matching them up with their 

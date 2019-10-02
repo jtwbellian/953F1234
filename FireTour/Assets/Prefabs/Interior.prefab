@@ -591,6 +591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 8316762862582423278}
+  invertActivation: 0
   persistAfterDeparture: 0
 --- !u!1 &3715322670352011137
 GameObject:
@@ -971,6 +972,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 3714616235811885083}
+  invertActivation: 0
   persistAfterDeparture: 0
 --- !u!1 &3715322670758233477
 GameObject:
@@ -1304,6 +1306,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 4660829098122902042}
+  invertActivation: 0
   persistAfterDeparture: 0
 --- !u!65 &7190906677268484860
 BoxCollider:
@@ -1318,20 +1321,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 20.474155, y: 9.972869, z: 6.8697987}
   m_Center: {x: -0.93092346, y: 5.2357297, z: 0.3056488}
---- !u!114 &7190906677268484861
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4660829098122902042}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4875cc0457e47f742a31b25fda868f03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  persistAfterDeparture: 0
 --- !u!114 &7190906677268484850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1345,6 +1334,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetMesh: {fileID: 0}
+--- !u!114 &7190906677268484861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4660829098122902042}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4875cc0457e47f742a31b25fda868f03, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  invertActivation: 0
+  persistAfterDeparture: 0
 --- !u!1 &7705509715764813683
 GameObject:
   m_ObjectHideFlags: 0
@@ -1751,6 +1755,21 @@ PrefabInstance:
       propertyPath: m_ScaleInLightmap
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -1504981713932161579, guid: ad8b9a8854276044d8e564a2168af1b4,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f21299332501e7649990520a54d7bd20, type: 2}
+    - target: {fileID: -1504981713932161579, guid: ad8b9a8854276044d8e564a2168af1b4,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c267c3df3822e7459c2525c9ff83a2d, type: 2}
+    - target: {fileID: -1504981713932161579, guid: ad8b9a8854276044d8e564a2168af1b4,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 68535a5dba870f6479c02492c3ea1450, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad8b9a8854276044d8e564a2168af1b4, type: 3}
 --- !u!1 &4660829098122902042 stripped

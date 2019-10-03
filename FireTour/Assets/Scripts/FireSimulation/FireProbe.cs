@@ -88,20 +88,22 @@ public class FireProbe : MonoBehaviour
             //grow the probe
             trigger.radius = trigger.radius * growRate;
             //prep the next shell for the next Refresh. Put these next two lines back in once multiple shells are baked
-            //if (shellIndex<shellCount)
-                //shellIndex+=1;
+            if (shellIndex<shellCount)
+                shellIndex+=1;
         }
 
     }
 
     IEnumerator Char()
     {
+        Debug.Log("Trying to create shellList..." + VertexGroup[shellIndex]);
         List<int> shellList = new List<int>(VertexGroup[shellIndex]);
-
+        Debug.Log("Created shellList");
         if (shellList.Count > 0)
         {        
             for (int i = 0; i < shellList.Count-1; ++i)
             {
+                Debug.Log("Place in Shell list is " + i);
                 //shellList contains several integers that each reference a particular vertex in the mesh.
                 //This for loop is cycling through each of these integers and matching them up with their 
                 //equivalent counterparts in the array of mesh vertex colors.  

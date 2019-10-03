@@ -44,9 +44,7 @@ public class Door : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         //if (Input.GetKey(KeyCode.UpArrow))
-    if (OVRInput.IsControllerConnected(OVRInput.Controller.RTrackedRemote))
-    {
-        if (OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTrackedRemote))
+        if (Input.GetKey(KeyCode.UpArrow) || OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTrackedRemote))
         {
             if (animator.GetBool("Open") == false)
             {
@@ -57,7 +55,7 @@ public class Door : MonoBehaviour
                 animator.SetBool("Open", false);
             }
         }
-    }
+    
     }
 
     void SetInteriorState(bool state)
@@ -78,14 +76,14 @@ public class Door : MonoBehaviour
 
     private bool GetInteriorState()
     {
-        if (interior[0].activeSelf)
+        if (interior[0] != null && interior[0].activeSelf)
             return (true);
         else 
             return (false);
     }
     private bool GetExteriorState()
     {
-        if (exterior[0].activeSelf)
+        if (exterior[0] != null && exterior[0].activeSelf)
             return (true);
         else 
             return (false);

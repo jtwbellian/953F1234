@@ -32,6 +32,7 @@ namespace SplineMesh {
         private GameObject generated;
         private Spline spline = null;
         private bool toUpdate = false;
+        public GameObject nozzle;
 
         /// <summary>
         /// A list of object that are storing data for each segment of the curve.
@@ -88,6 +89,9 @@ namespace SplineMesh {
 
             if (toUpdate) {
                 toUpdate = false;
+                //Dan's custom code to snap the last node to target
+                spline.nodes[spline.nodes.Count-1].Position = transform.InverseTransformPoint(nozzle.transform.position);
+                spline.nodes[spline.nodes.Count-1].Direction = transform.InverseTransformPoint(nozzle.transform.GetChild(0).position);
                 CreateMeshes();
             }
         }

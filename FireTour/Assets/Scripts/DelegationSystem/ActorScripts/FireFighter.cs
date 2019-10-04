@@ -45,7 +45,12 @@ public class FireFighter : DelegationActor
 
     private void OnTriggerEnter(Collider other) 
     {
-        //if (other.)
+        if (other.gameObject.tag == "Door")
+            inDoorway = true;
     }
-
+    private void OnTriggerExit(Collider other) 
+    {
+        if (other.gameObject.tag == "Door")
+            inDoorway = true;
+    }
 }

@@ -5,6 +5,7 @@ using TMPro;
 
 public class Door : MonoBehaviour
 {
+    public static int doorsOpen = 0;
     private Animator animator;
 
     private GameObject textMeshFront;
@@ -18,8 +19,11 @@ public class Door : MonoBehaviour
     public GameObject[] exterior;
 
     public Interior interiorBoundary;
+    public SphereCollider handleCollider;
+    public GameObject hintUI;
 
     private bool doorIsOpen;
+    private bool invertActivation = false;
 
     // Start is called before the first frame update
     void Start()
@@ -43,18 +47,80 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void OnTriggerStay(Collider other)
     {
-        if (Input.GetKey(KeyCode.UpArrow) || OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTrackedRemote))
+        // Only if the tag is player and is a spherecollider ( Not body Capsule )
+        if (other.tag == "Player" && other.GetType() == typeof(SphereCollider))
         {
-            if (animator.GetBool("Open") == false)
+            SphereCollider sphere = other as SphereCollider; 
+
+            // Return if staying in outer trigger
+            if (Vector3.Distance(other.transform.position, transform.TransformPoint(handleCollider.center)) > sphere.radius + handleCollider.radius)
             {
-                animator.SetBool("Open", true);
+                return;
             }
-            else
+
+            // otherwise hand must be over inner trigger
+
+            if (Input.GetKey(KeyCode.UpArrow) || OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTrackedRemote))
             {
-                animator.SetBool("Open", false);
+                if (doorIsOpen)
+                {
+                    Close();
+                }
+                else
+                {
+                    Open();
+                }
             }
         }
+    }
+
+    [ContextMenu("Open")]
+    public void Open()
+    {
+        animator.SetBool("Open", true);
+        Door.doorsOpen++;
+    }
     
+    [ContextMenu("Close")]
+    public void Close()
+    {
+        animator.SetBool("Open", false);
+
+        Door.doorsOpen--;
+    }
+
+    void OnTriggerEnter(Collider Other)
+    {
+        if (hintUI !=null && Other.tag == "Player")
+        {
+                if (invertActivation)
+                {
+                    if (hintUI.activeSelf)
+                        hintUI.gameObject.SetActive(false);
+                }  
+                else
+                {
+                    if (!hintUI.activeSelf)
+                        hintUI.gameObject.SetActive(true);
+                }   
+        }
+    }
+
+    private void OnTriggerExit(Collider Other)
+    {
+        if (hintUI !=null && Other.tag == "Player")
+        {
+            if (invertActivation)
+            {
+                if (!hintUI.activeSelf)
+                    hintUI.gameObject.SetActive(true);
+            }  
+            else
+            {
+                if (hintUI.activeSelf)
+                    hintUI.gameObject.SetActive(false);
+            }   
+        }
     }
 
     void SetInteriorState(bool state)
@@ -92,6 +158,10 @@ public class Door : MonoBehaviour
     {
         SetDoorText("Squeeze Grip to Open Door");
         doorIsOpen = false;
+
+        if (Door.doorsOpen > 0)
+            return; 
+
         if (interiorBoundary.playerIsInside == true)
         {
             if (!GetInteriorState())
@@ -116,6 +186,7 @@ public class Door : MonoBehaviour
 
         if (!GetInteriorState())
             SetInteriorState(true);
+
         if (!GetExteriorState())
             SetExteriorState(true);
     }

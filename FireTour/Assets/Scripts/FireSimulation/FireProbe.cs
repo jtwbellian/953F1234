@@ -9,8 +9,8 @@ public class FireProbe : MonoBehaviour
 
     private int num = 1;
     private bool lit = false;
-    private const float growRate = 0.25f;
-    private const float startRadius = 1f;
+    private const float growRate = 1.2f;
+    private const float startRadius = 0.5f;
     private FireManager fm;
     private FXManager fx;
     public SphereCollider trigger;
@@ -23,6 +23,8 @@ public class FireProbe : MonoBehaviour
     public static int shellCount = Mathf.RoundToInt(Mathf.Log(MAX_RADIUS / startRadius) / Mathf.Log(growRate)); 
 
     public int shellIndex = 0;
+
+    private List<int> shellList;
 
     public List<int>[] VertexGroup = new List<int>[shellCount];
 
@@ -96,12 +98,24 @@ public class FireProbe : MonoBehaviour
 
     IEnumerator Char()
     {
-        List<int> shellList = new List<int>(VertexGroup[shellIndex]);
-
+        Debug.Log("Trying to create shellList...");
+        if (VertexGroup[shellIndex] != null)
+        {
+            shellList = new List<int>(VertexGroup[shellIndex]);
+            Debug.Log("Created shellList");
+        }
+        else
+        {
+            shellList.Add(1);
+            shellList.Add(2);
+            shellList.Add(3);
+            Debug.Log("VertexGroup returned NULL."); 
+        }
         if (shellList.Count > 0)
         {        
-            for (int i = 0; i < shellList.Count; ++i)
+            for (int i = 0; i < shellList.Count-1; ++i)
             {
+                Debug.Log("Place in Shell list is " + i);
                 //shellList contains several integers that each reference a particular vertex in the mesh.
                 //This for loop is cycling through each of these integers and matching them up with their 
                 //equivalent counterparts in the array of mesh vertex colors.  

@@ -153,6 +153,7 @@ public class FireManager : MonoBehaviour
     [ContextMenu("Bake Vertex Catalog")]
     void Catalog()
     {
+        Debug.Log("Attempting to bake...");
         mesh = targetMesh.sharedMesh;
         //Create empty array of proper size to manage mesh Vertex count
         Vector3[] vertPos = new Vector3[mesh.vertices.Length];
@@ -163,7 +164,7 @@ public class FireManager : MonoBehaviour
         {
             Vector3 world_v = mesh.vertices[i]; //localToWorld.MultiplyPoint3x4(mesh.vertices[i]);
             vertPos[i] = world_v + new Vector3(-2.69f, 0.0568691f, 20.52f); //+ targetMesh.transform.position;
-            Debug.Log("Index: " + i.ToString() + "  Worldspace Location:" + vertPos[i].ToString());
+            //Debug.Log("Index: " + i.ToString() + "  Worldspace Location:" + vertPos[i].ToString());
         }
 
             //Delegate vertex points to each Node
@@ -184,17 +185,18 @@ public class FireManager : MonoBehaviour
                 if (i > 0)
                 for(int j = 0; j < currentShellGroup.Count-1; j++) //Clean out duplicates
                 {
+                    if (j > 0)
                     if (currentShellGroup[j] == currentShellGroup[j-1])
                     {
                        currentShellGroup.Remove(j);
                     }
                 }
-
+                
                 probe.VertexGroup[i] = currentShellGroup;
             }
 
         }
-        
+        Debug.Log("Vertex Catalog successfully baked.");
         }
  
 }

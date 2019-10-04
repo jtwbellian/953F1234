@@ -4,7 +4,7 @@ using System.Collections;
 public class VRPointer : MonoBehaviour {
 
     private GameObject hand;
-    private float maxDist = 500f;
+    private float maxDist = 100f;
     private VRButton lastButton;
 
     public GameObject primaryHand;
@@ -62,7 +62,8 @@ public class VRPointer : MonoBehaviour {
         // Does the ray intersect any objects excluding the player layer
         if (Physics.Raycast(hand.transform.position, hand.transform.TransformDirection(Vector3.forward), out hit, maxDist, layerMask ))
         {
-            laser.transform.localScale = new Vector3(1f, 1f, Vector3.Distance(transform.position, hit.point));
+            var distToHit = Vector3.Distance(transform.position, hit.point);
+            laser.transform.localScale = new Vector3(1f, 1f, distToHit);
 
             if (cursor.activeSelf)
             {

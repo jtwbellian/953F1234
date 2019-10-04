@@ -6,10 +6,14 @@ using UnityEngine;
 public class FireFighter : DelegationActor
 {
     public FireFighterController controller;
+    public float timeToSearch = 35;
+    public bool inDoorway = false;
     private SetHead headSetter;
     private string [] namesList = {"FireFighter", "Abel", "Bower", "Chen", "Davis", "Estrada", "Feldman", "Hewett", "Lewis", "Miller", "Nassar", "Sulivan", "Turner"};
     public string name = "FireFighter";
     public ToonLines outline;
+
+    public CharacterButton charaButton;
 
     public override void Init() 
     {
@@ -19,7 +23,7 @@ public class FireFighter : DelegationActor
 
         outline =  GetComponent<ToonLines>();
 
-        DelegationManager.Instance.menu.AddCharacter(this);
+        charaButton = DelegationManager.Instance.menu.AddCharacter(this);
     }
 
     public void SetOutline(bool active)
@@ -38,4 +42,10 @@ public class FireFighter : DelegationActor
     {
         return headSetter.headIndex;
     }
+
+    private void OnTriggerEnter(Collider other) 
+    {
+        //if (other.)
+    }
+
 }

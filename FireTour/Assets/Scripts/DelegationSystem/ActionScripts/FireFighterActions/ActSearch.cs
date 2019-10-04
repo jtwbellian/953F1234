@@ -4,29 +4,49 @@ using UnityEngine;
 
 public class ActSearch : DelegationAction
 {
-    private string targetLocation = "Door";
+    private string targetLocation = "NA";
     private Transform entrance = null;
     private FireFighter fireFighter;
 
+    private string title = "Search";
+
     public void Start()
     {
-        if (DelegationManager.Instance.menu.locations.ContainsKey(targetLocation))
-            entrance = DelegationManager.Instance.menu.locations[targetLocation];
+        //if (DelegationManager.Instance.menu.locations.ContainsKey(targetLocation))
+       //     entrance = DelegationManager.Instance.menu.locations[targetLocation];
+
     }
 
-    public override void startAction(GameObject actor){
+    public override void startAction(GameObject actor)
+    {
         // do something with the actor object
         
-        FireFighter fireFighter = actor.GetComponent<FireFighter>();
-        
+        fireFighter = actor.GetComponent<FireFighter>();
+        targetLocation = fireFighter.assignedLocation.name;
+
         if (fireFighter)
         {
-            fireFighter.controller.SetDestination(entrance);
+            fireFighter.controller.SetDestination(fireFighter.assignedLocation.transform);
+            fireFighter.controller.onDestinationArrived += BeginSearch;
+            fireFighter.charaButton.SetStatus(Status.running, "Headed to " + targetLocation);
         }
         else
         {
             Debug.Log("Error: Trying to start action but No FireFighter component found.");
         }
+    }
+
+    public void BeginSearch()
+    {
+        //var wall location = fireFighter.assignedLocation.GetComponent<DelegationLocation>();
+
+        if (fireFighter.inDoorway) // If in a doorway, open the door and enter
+        {
+            fireFighter.charaButton.SetStatus(Status.door, "Entering From " + targetLocation);
+        }
+        // 
+
+        fireFighter.controller.onDestinationArrived -= BeginSearch;
     }
     
     /// <summary>
@@ -34,7 +54,8 @@ public class ActSearch : DelegationAction
     /// will call this method. This method will define how the action will be stopped.
     /// </summary>
     /// <param name="actor"></param>
-    public override void stopAction(GameObject actor){
+    public override void stopAction(GameObject actor)
+    {
         // stop
         FireFighter fireFighter = actor.GetComponent<FireFighter>();
         
@@ -42,6 +63,8 @@ public class ActSearch : DelegationAction
         {
             fireFighter.controller.CancelDestination();
         }
+
+        fireFighter.controller.onDestinationArrived -= BeginSearch;
     }
 
     /// <summary>

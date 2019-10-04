@@ -15,7 +15,7 @@ public class DelegationMenu : MonoBehaviour
     Transform cam; 
     public List<Sprite> imageIcons;
     public TextMeshProUGUI currentCharacter;
-    public TextMeshProUGUI currentCharacterState;
+    public TextMeshProUGUI currentCharacterAction;
 
     [Tooltip("0 - Action\n 1 - location\n 2 - ???")]
     public GameObject [] tabs; // Action tab should be 0, location 1, ect...
@@ -25,7 +25,7 @@ public class DelegationMenu : MonoBehaviour
 
     public GameObject actionPanel;
     public GameObject characterPanel;
-    public StringTransformDictionary locations;
+//    public StringTransformDictionary locations;
 
 
     // Start is called before the first frame update
@@ -48,9 +48,9 @@ public class DelegationMenu : MonoBehaviour
         }	
     }
 
-    public void AddCharacter(FireFighter source)
+    public CharacterButton AddCharacter(FireFighter source)
     {
-        var offset = 0.5f; 
+        var offset = 0.35f; 
 
         Debug.Log("Creating fire fighter...");
         GameObject obj = Instantiate(characterPrefab, characterPrefab.transform.position + characterPrefab.transform.right * (offset * (characters.Count - 1)) , Quaternion.identity);
@@ -66,6 +66,8 @@ public class DelegationMenu : MonoBehaviour
 
         characters.Add(charaButton);
         Debug.Log("Welcome to the force, " + source.name + ".");
+        
+        return charaButton;
     }
 
     public void ClearSelection()
@@ -106,6 +108,12 @@ public class DelegationMenu : MonoBehaviour
     {
         currentCharacter.text = name;
     }
+
+    public void SetCurrentAction(string action)
+    {
+        currentCharacterAction.text = action;
+    }
+
 
     public void CreateAction(GameObject prefab)
     {

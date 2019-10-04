@@ -25,7 +25,7 @@ public class Door : MonoBehaviour
     void Start()
     {
         animator = gameObject.GetComponent<Animator>();
-        SetDoorText("Squeeze Grip /nto Open Door");
+        SetDoorText("Squeeze Grip to Open Door");
     }
 
     void SetDoorText(string text)
@@ -43,7 +43,6 @@ public class Door : MonoBehaviour
     // Update is called once per frame
     void OnTriggerStay(Collider other)
     {
-        //if (Input.GetKey(KeyCode.UpArrow))
         if (Input.GetKey(KeyCode.UpArrow) || OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTrackedRemote))
         {
             if (animator.GetBool("Open") == false)
@@ -91,7 +90,7 @@ public class Door : MonoBehaviour
 
     public void DoorIsShut()
     {
-        SetDoorText("Squeeze Grip /nto Open Door");
+        SetDoorText("Squeeze Grip to Open Door");
         doorIsOpen = false;
         if (interiorBoundary.playerIsInside == true)
         {
@@ -112,7 +111,7 @@ public class Door : MonoBehaviour
     }
     public void DoorIsOpen()
     {
-        SetDoorText("Squeeze Grip /nto Close Door");
+        SetDoorText("Squeeze Grip to Close Door");
         doorIsOpen = true;
 
         if (!GetInteriorState())

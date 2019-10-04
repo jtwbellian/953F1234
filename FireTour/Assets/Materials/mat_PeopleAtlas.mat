@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: mat_PeopleAtlas
-  m_Shader: {fileID: -6465566751694194690, guid: bc486a3f7be90a948959bb4f3044d9a8,
+  m_Shader: {fileID: -6465566751694194690, guid: 783cb340fff92054daab1e3a28feddfe,
     type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -73,6 +73,30 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _burnnorm:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _burntex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _emitmap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _tex_albedo:
+        m_Texture: {fileID: 2800000, guid: a930af9e837867f41b390cff3495b07e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _tex_norm:
+        m_Texture: {fileID: 2800000, guid: 501bbf80b4f51f24c9c26e578a5a1b40, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _tex_rgb:
+        m_Texture: {fileID: 2800000, guid: 02f4612c6d90bb34d973f0c77d172241, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_411E3556: 0.18
     - Vector1_67F6EB81: 0.077
@@ -97,6 +121,11 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
+    - _aclip: 0.5
+    - _burnscale: 1
+    - _emissive: 0
+    - _vertex: 0
+    - _wave: 0
     m_Colors:
     - _BaseColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _Color: {r: 0.5, g: 0.5, b: 0.5, a: 1}

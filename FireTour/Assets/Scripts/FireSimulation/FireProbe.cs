@@ -24,6 +24,8 @@ public class FireProbe : MonoBehaviour
 
     public int shellIndex = 0;
 
+    private List<int> shellList;
+
     public List<int>[] VertexGroup = new List<int>[shellCount];
 
     public FXManager.PType fireType = FXManager.PType.Flame1;
@@ -88,17 +90,27 @@ public class FireProbe : MonoBehaviour
             //grow the probe
             trigger.radius = trigger.radius * growRate;
             //prep the next shell for the next Refresh. Put these next two lines back in once multiple shells are baked
-            if (shellIndex<shellCount)
-                shellIndex+=1;
+            //if (shellIndex<shellCount)
+                //shellIndex+=1;
         }
 
     }
 
     IEnumerator Char()
     {
-        Debug.Log("Trying to create shellList..." + VertexGroup[shellIndex]);
-        List<int> shellList = new List<int>(VertexGroup[shellIndex]);
-        Debug.Log("Created shellList");
+        Debug.Log("Trying to create shellList...");
+        if (VertexGroup[shellIndex] != null)
+        {
+            shellList = new List<int>(VertexGroup[shellIndex]);
+            Debug.Log("Created shellList");
+        }
+        else
+        {
+            shellList.Add(1);
+            shellList.Add(2);
+            shellList.Add(3);
+            Debug.Log("VertexGroup returned NULL."); 
+        }
         if (shellList.Count > 0)
         {        
             for (int i = 0; i < shellList.Count-1; ++i)

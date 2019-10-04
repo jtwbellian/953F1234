@@ -61,7 +61,7 @@ public class FireManager : MonoBehaviour
         //prepare blank color list
         for (int i = 0; i < mesh.vertexCount; i++)
             vertColorList.Add(Color.white);
-        //Catalog();
+        Catalog();
         StartCoroutine("SpreadFire");
     }
 
@@ -191,7 +191,7 @@ public class FireManager : MonoBehaviour
                        currentShellGroup.Remove(j);
                     }
                 }
-
+                
                 probe.VertexGroup[i] = currentShellGroup;
             }
 

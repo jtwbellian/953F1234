@@ -15,6 +15,7 @@ public class ActSearch : DelegationAction
         //if (DelegationManager.Instance.menu.locations.ContainsKey(targetLocation))
        //     entrance = DelegationManager.Instance.menu.locations[targetLocation];
 
+       DelegationManager.Instance.menu.SetCurrentAction(title);
     }
 
     public override void startAction(GameObject actor)
@@ -29,6 +30,7 @@ public class ActSearch : DelegationAction
             fireFighter.controller.SetDestination(fireFighter.assignedLocation.transform);
             fireFighter.controller.onDestinationArrived += BeginSearch;
             fireFighter.charaButton.SetStatus(Status.running, "Headed to " + targetLocation);
+
         }
         else
         {
@@ -65,6 +67,7 @@ public class ActSearch : DelegationAction
         }
 
         fireFighter.controller.onDestinationArrived -= BeginSearch;
+        Destroy(this.gameObject);
     }
 
     /// <summary>

@@ -55,13 +55,16 @@ public class CharacterButton : VRButton
         {
             statusIcon.color = c_hidden;
             avatar.color = c_white;
+            Debug.Log(gameObject.ToString() + " is now Standing By");
             return;
         }
 
         statusIcon.sprite = icons[(int)status];
         statusIcon.color = c_white;
         avatar.color = c_busy;
+        _status.text = description;
 
+        Debug.Log("Setting status to " + description);
     }
 
     public void SelectCharacter()
@@ -69,7 +72,8 @@ public class CharacterButton : VRButton
         delegationMenu.ClearSelection();
         delegationMenu.SetActionPanel(true);
         delegationMenu.SetTab(0);
-        delegationMenu.currentCharacter.text = actor.name;
+        delegationMenu.currentCharacterName.text = actor.name;
+        delegationMenu.currentCharacter = this;
 
         // Update label to "awaiting orders"
         if (_status.text == "Standing By")

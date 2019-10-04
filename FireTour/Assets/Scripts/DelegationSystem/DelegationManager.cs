@@ -34,7 +34,6 @@ public class DelegationManager : MonoBehaviour
             menu = GameObject.FindObjectOfType<DelegationMenu>();
     }
 
-
     /// <summary>
     /// This method is the method that needs to be used externally. The input manager should be
     /// sending selected targets to this method. This means the script where you have your inputs
@@ -80,7 +79,8 @@ public class DelegationManager : MonoBehaviour
     /// Checks if the actor assigned is ready to perform.
     /// </summary>
     /// <returns></returns>
-    private bool isAssigneeReady(){
+    private bool isAssigneeReady()
+    {
         if(this.assigneeId != -1){
             return this.actorManager.actorMap[this.assigneeId].isReady() == 2;
         }
@@ -91,14 +91,16 @@ public class DelegationManager : MonoBehaviour
     /// The actor begins their their performance using the assigned action and locations.  Remember
     /// to manually create Actions!!
     /// </summary>
-    private void assigneePerforms(){
+    private void assigneePerforms()
+    {
         Debug.Log($"Assignee with uid of {this.assigneeId} begins work.");
         // This will throw errors if actions have not been assigned!
         this.actorManager.actorMap[this.assigneeId].beginPerformance();
         this.assigneeId = -1;
     }
 
-    private void autoAssign(){
+    private void autoAssign()
+    {
         this.assigneeId = this.actorManager.getIdleActor().uid;
         Debug.Log("AutoAssigned " + this.assigneeId.ToString());
 
@@ -109,11 +111,14 @@ public class DelegationManager : MonoBehaviour
     /// actor has been selected one will be selected for you if they are available.
     /// </summary>
     /// <param name="target"></param>
-    private void assignToAssignee(GameObject target){
+    private void assignToAssignee(GameObject target)
+    {
+        // Removing Auto Assign for now because it was preventing action overwriting
+        
         if(this.assigneeId == -1){
             this.autoAssign();
         }
-
+        
         if(target.tag == "action"){
             this.actorManager.actorMap[this.assigneeId].setAction(target);
         } else if(target.tag == "location"){
@@ -128,11 +133,16 @@ public class DelegationManager : MonoBehaviour
     /// actor and the new actor will need to start being assigned.
     /// </summary>
     /// <param name="target"></param>
-    private void setAssignee(GameObject target){
-        if(this.assigneeId != -1 && this.assigneeId != target.GetComponent<DelegationActor>().uid){
-            this.actorManager.actorMap[this.assigneeId].resetAssignments();
-        }
+    private void setAssignee(GameObject target)
+    {
         this.assigneeId = target.GetComponent<DelegationActor>().uid;
+        Debug.Log("Setting assigneeID to " + this.assigneeId);
+
+        if(this.assigneeId != -1)// && this.assigneeId != target.GetComponent<DelegationActor>().uid)
+        {
+            this.actorManager.actorMap[this.assigneeId].resetAssignments();
+            Debug.Log("Clearing Assignment");
+        }
     }
 
 }

@@ -130,7 +130,8 @@ public class DelegationActor : MonoBehaviour
     /// <summary>
     /// Reset the actor.
     /// </summary>
-    public void resetAssignments(){
+    public void resetAssignments()
+    {
         this.assignedAction = null;
         this.assignedLocation = null;
     }

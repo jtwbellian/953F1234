@@ -14,7 +14,8 @@ public class DelegationMenu : MonoBehaviour
     const float MAX_DIST_TO_HEAD = 0.3f;
     Transform cam; 
     public List<Sprite> imageIcons;
-    public TextMeshProUGUI currentCharacter;
+    public CharacterButton currentCharacter;
+    public TextMeshProUGUI currentCharacterName;
     public TextMeshProUGUI currentCharacterAction;
 
     [Tooltip("0 - Action\n 1 - location\n 2 - ???")]
@@ -106,7 +107,7 @@ public class DelegationMenu : MonoBehaviour
 
     void SetName(string name)
     {
-        currentCharacter.text = name;
+        currentCharacterName.text = name;
     }
 
     public void SetCurrentAction(string action)
@@ -117,8 +118,13 @@ public class DelegationMenu : MonoBehaviour
 
     public void CreateAction(GameObject prefab)
     {
+        // Cancel previous task 
+        if (currentCharacter.actor.assignedAction != null)
+            currentCharacter.actor.stopPerforming();
+
         var action = Instantiate(prefab);
         DelegationManager.Instance.Selection(action);
+
         SetTab(1);
     }
 

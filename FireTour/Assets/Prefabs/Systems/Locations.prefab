@@ -168,7 +168,7 @@ GameObject:
   - component: {fileID: 22869994}
   - component: {fileID: 22869995}
   m_Layer: 0
-  m_Name: Charlie
+  m_Name: C
   m_TagString: location
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -985,7 +985,7 @@ GameObject:
   - component: {fileID: 1539029286}
   - component: {fileID: 1539029287}
   m_Layer: 0
-  m_Name: Delta
+  m_Name: D
   m_TagString: location
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1701,7 +1701,7 @@ GameObject:
   - component: {fileID: 1713313882359647237}
   - component: {fileID: 8390689440583123985}
   m_Layer: 0
-  m_Name: Alpha
+  m_Name: A
   m_TagString: location
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1848,7 +1848,7 @@ GameObject:
   - component: {fileID: 8179614251121436667}
   - component: {fileID: 894066924753673054}
   m_Layer: 0
-  m_Name: Bravo
+  m_Name: B
   m_TagString: location
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

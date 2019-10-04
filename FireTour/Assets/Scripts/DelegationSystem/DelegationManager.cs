@@ -114,7 +114,6 @@ public class DelegationManager : MonoBehaviour
     private void assignToAssignee(GameObject target)
     {
         // Removing Auto Assign for now because it was preventing action overwriting
-        
         if(this.assigneeId == -1){
             this.autoAssign();
         }
@@ -124,7 +123,6 @@ public class DelegationManager : MonoBehaviour
         } else if(target.tag == "location"){
             this.actorManager.actorMap[this.assigneeId].setLocation(target);
         }
-
     }
 
     /// <summary>

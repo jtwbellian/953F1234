@@ -21,6 +21,7 @@ public class Door : MonoBehaviour
     public Interior interiorBoundary;
     public SphereCollider handleCollider;
     public GameObject hintUI;
+    public Transform entryPoint;
 
     private bool doorIsOpen;
     private bool invertActivation = false;

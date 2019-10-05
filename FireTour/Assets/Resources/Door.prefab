@@ -295,6 +295,7 @@ GameObject:
   - component: {fileID: 841108318493627600}
   - component: {fileID: 4312112985469667332}
   - component: {fileID: 2482115076405019509}
+  - component: {fileID: 3773949881383210642}
   m_Layer: 15
   m_Name: Door
   m_TagString: Untagged
@@ -315,6 +316,7 @@ Transform:
   m_Children:
   - {fileID: 3580906892230275963}
   - {fileID: 8534584139205041838}
+  - {fileID: 570229822398776991}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -0.407, z: 0}
@@ -447,6 +449,9 @@ MonoBehaviour:
   interior: []
   exterior: []
   interiorBoundary: {fileID: 0}
+  handleCollider: {fileID: 0}
+  hintUI: {fileID: 3828776914416626874}
+  entryPoint: {fileID: 570229822398776991}
 --- !u!114 &2482115076405019509
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -462,6 +467,19 @@ MonoBehaviour:
   m_SynchronizePosition: 0
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
+--- !u!135 &3773949881383210642
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4623990476616158255}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: 0.89, y: 1.02, z: 0.0004959274}
 --- !u!1 &4731594252286410198
 GameObject:
   m_ObjectHideFlags: 0
@@ -666,6 +684,36 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   m_maskType: 0
+--- !u!1 &6163817468313383130
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 570229822398776991}
+  m_Layer: 15
+  m_Name: EntryPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &570229822398776991
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6163817468313383130}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.581, y: 0, z: -4.741}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8534584137357999676}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &3677852929976858036
 PrefabInstance:
   m_ObjectHideFlags: 0

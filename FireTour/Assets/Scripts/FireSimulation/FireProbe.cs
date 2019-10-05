@@ -115,7 +115,8 @@ public class FireProbe : MonoBehaviour
         {        
             for (int i = 0; i < shellList.Count-1; ++i)
             {
-                Debug.Log("Place in Shell list is " + i);
+                //Debug.Log("Place in Shell list is " + i);
+                
                 //shellList contains several integers that each reference a particular vertex in the mesh.
                 //This for loop is cycling through each of these integers and matching them up with their 
                 //equivalent counterparts in the array of mesh vertex colors.  

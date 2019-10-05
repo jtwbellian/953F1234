@@ -46,12 +46,15 @@ public class DelegationMenu : MonoBehaviour
 
             if (distToHead > MAX_DIST_TO_HEAD)
                 transform.position = cam.position;
+
+            // Rotate our transform a step closer to the target's.
+            transform.rotation = Quaternion.Slerp(transform.rotation, cam.rotation, Time.deltaTime * 2f);
         }	
     }
 
     public CharacterButton AddCharacter(FireFighter source)
     {
-        var offset = 0.35f; 
+        var offset = 0.37f; 
 
         Debug.Log("Creating fire fighter...");
         GameObject obj = Instantiate(characterPrefab, characterPrefab.transform.position + characterPrefab.transform.right * (offset * (characters.Count - 1)) , Quaternion.identity);

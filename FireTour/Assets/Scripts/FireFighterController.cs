@@ -10,6 +10,7 @@ public class FireFighterController : MonoBehaviour
 
     public delegate void OnDestinationDelegate();
     public OnDestinationDelegate onDestinationArrived; 
+    public Transform home;
 
     private float maxSpeed;
 
@@ -22,8 +23,6 @@ public class FireFighterController : MonoBehaviour
     // Added this function so I can change the destination through code
     public void SetDestination(Transform target)
     {
-        Debug.Log("Taget was " + target);
-
         agent.SetDestination(target.position);
         myDestination = target;
     }
@@ -33,18 +32,23 @@ public class FireFighterController : MonoBehaviour
         agent.Stop();
     }
 
-private void OnTriggerEnter(Collider other) 
-{
-    if (other.transform == myDestination)
+    public void GoHome()
     {
-        myDestination = null;
+        SetDestination(home);
+    }
 
-        if (onDestinationArrived != null)
+    private void OnTriggerEnter(Collider other) 
+    {
+        if (other.transform == myDestination)
         {
-            onDestinationArrived.Invoke();
+            myDestination = null;
+
+            if (onDestinationArrived != null)
+            {
+                onDestinationArrived.Invoke();
+            }
         }
     }
-}
     void Update()
     {
         animator.SetFloat("Speed", agent.velocity.magnitude / maxSpeed);

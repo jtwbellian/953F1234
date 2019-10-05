@@ -5,6 +5,7 @@ public class VRPointer : MonoBehaviour {
 
     private GameObject hand;
     private float maxDist = 100f;
+    private float teleportRange = 2.5f;
     private VRButton lastButton;
 
     public GameObject primaryHand;
@@ -60,7 +61,7 @@ public class VRPointer : MonoBehaviour {
         var layerMask = LayerMask.GetMask("UI", "Surface");
 
         // Does the ray intersect any objects excluding the player layer
-        if (Physics.Raycast(hand.transform.position, hand.transform.TransformDirection(Vector3.forward), out hit, maxDist, layerMask ))
+        if (Physics.Raycast(hand.transform.position, hand.transform.TransformDirection(Vector3.forward), out hit, canTeleport?teleportRange:maxDist, layerMask))
         {
             var distToHit = Vector3.Distance(transform.position, hit.point);
             laser.transform.localScale = new Vector3(1f, 1f, distToHit);
@@ -78,7 +79,7 @@ public class VRPointer : MonoBehaviour {
                 laser.SetActive(true);
             }
 
-            if (canTeleport)
+            if (canTeleport && distToHit < teleportRange)
             {
                 // Hit a teleportable surface
                 if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Surface"))
@@ -160,6 +161,7 @@ public class VRPointer : MonoBehaviour {
             if (DelegationManager.Instance)
             {
                 DelegationManager.Instance.menu.SetCharacterPanel(true);
+                //DelegationManager.Instance.menu.transform.rotation = Quaternion.EulerAngles(new Vector3(0f, headTransform.rotation.EulerAngles.y, 0f));
             }
         }
 
@@ -168,7 +170,6 @@ public class VRPointer : MonoBehaviour {
         {
             wait += selectTime * Time.deltaTime;
             //Debug.Log("( " + wait + " ) waiting " + selectTime / Time.deltaTime);
-
             UICircle.SetFillAmount(wait);
         }
         else

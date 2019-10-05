@@ -7,7 +7,7 @@ public class FXManager : MonoBehaviour
 
     public enum PType
     {
-        Flame1, Smoke1, Flame2, Smoke2, 
+        Flame1, Smoke1, Flame2, Smoke2, None,
     }
 
     static FXManager instance = null;

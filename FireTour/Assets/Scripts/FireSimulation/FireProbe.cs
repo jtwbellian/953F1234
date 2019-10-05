@@ -18,6 +18,7 @@ public class FireProbe : MonoBehaviour
     private float updateTime = 2.5f;
     private float vertexUpdateTime = 0.1f;
     private Vector3 randomOffset;
+    public bool emissionDisabled;
 
     //Calculuate number of times a probe can expand before reaching MAX_RADIUS
     public static int shellCount = Mathf.RoundToInt(Mathf.Log(MAX_RADIUS / startRadius) / Mathf.Log(growRate)); 
@@ -98,24 +99,21 @@ public class FireProbe : MonoBehaviour
 
     IEnumerator Char()
     {
-        Debug.Log("Trying to create shellList...");
+        //Debug.Log("Trying to create shellList...");
         if (VertexGroup[shellIndex] != null)
         {
             shellList = new List<int>(VertexGroup[shellIndex]);
-            Debug.Log("Created shellList");
+            //Debug.Log("Created shellList");
         }
         else
         {
-            shellList.Add(1);
-            shellList.Add(2);
-            shellList.Add(3);
             Debug.Log("VertexGroup returned NULL."); 
         }
         if (shellList.Count > 0)
         {        
             for (int i = 0; i < shellList.Count-1; ++i)
             {
-                Debug.Log("Place in Shell list is " + i);
+                //Debug.Log("Place in Shell list is " + i);
                 //shellList contains several integers that each reference a particular vertex in the mesh.
                 //This for loop is cycling through each of these integers and matching them up with their 
                 //equivalent counterparts in the array of mesh vertex colors.  
@@ -131,8 +129,11 @@ public class FireProbe : MonoBehaviour
         while (lit)
         {
             //randomOffset = new Vector3(Random.Range(-0.2f, 0.2f),  Random.Range(-0.2f, 0.2f), Random.Range(-0.2f, 0.2f));
-            fx.Burst(fireType, transform.position + randomOffset, fm.windHorn.windSpeed, num);
-            fx.Burst(smokeType, transform.position + randomOffset, fm.windHorn.windSpeed, num);
+            if (emissionDisabled == false)
+            {
+                fx.Burst(fireType, transform.position + randomOffset, fm.windHorn.windSpeed, num);
+                fx.Burst(smokeType, transform.position + randomOffset, fm.windHorn.windSpeed, num);
+            }
             yield return new WaitForSeconds(updateTime);
         }
         yield return null;

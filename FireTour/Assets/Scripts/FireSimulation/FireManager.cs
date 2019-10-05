@@ -14,7 +14,7 @@ public class FireManager : MonoBehaviour
     public bool simulateFire = true;
 
     [SerializeField, Range(0.01f, 50f)]
-    private float timeToDouble = 30f;
+    private float timeToDouble = 60f;
 
     private List<Color32> vertColorList;
 
@@ -153,7 +153,7 @@ public class FireManager : MonoBehaviour
     [ContextMenu("Bake Vertex Catalog")]
     void Catalog()
     {
-        Debug.Log("Attempting to bake...");
+        //Debug.Log("Attempting to bake...");
         mesh = targetMesh.sharedMesh;
         //Create empty array of proper size to manage mesh Vertex count
         Vector3[] vertPos = new Vector3[mesh.vertices.Length];
@@ -196,7 +196,7 @@ public class FireManager : MonoBehaviour
             }
 
         }
-        Debug.Log("Vertex Catalog successfully baked.");
+        //Debug.Log("Vertex Catalog successfully baked.");
         }
  
 }

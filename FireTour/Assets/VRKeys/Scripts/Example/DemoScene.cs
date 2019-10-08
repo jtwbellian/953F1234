@@ -156,7 +156,7 @@ namespace VRKeys {
 
 			loginManager.mainMenu.SetActive(true);
 			// Invokes any additional events when email is entered
-			onEmailEntered.Invoke();
+			//onEmailEntered.Invoke();
 			loginManager.SetUser(email);
 
 			// 0 for menu, 1 for prompt

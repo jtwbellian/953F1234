@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 
+
 public class VRButton : MonoBehaviour
 {
     public Image panel;
@@ -11,15 +12,19 @@ public class VRButton : MonoBehaviour
     public Color defaultColor;
     public UnityEvent onPressed;
 
+    [ReadOnly]
     public bool hover = false;
 
     public void SetHover(bool active)
     {
-        if (active)
-            panel.color = hoverColor;
-        else
-            panel.color = defaultColor;
-
+        if (panel)
+        {
+            if (active)
+                panel.color = hoverColor;
+            else
+                panel.color = defaultColor;
+        }
+        
         hover = active;
     }
 

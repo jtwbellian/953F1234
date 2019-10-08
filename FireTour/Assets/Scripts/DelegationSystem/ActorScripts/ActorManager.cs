@@ -38,6 +38,7 @@ public class ActorManager : SerializedMonoBehaviour
         }
     }
 
+
     public DelegationActor getIdleActor(){
         DelegationActor actor = this.idleMap[idleMap.Keys.First()];
         this.idleMap.Remove(idleMap.Keys.First());

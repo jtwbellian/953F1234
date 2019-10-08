@@ -134,6 +134,8 @@ public class FireProbe : MonoBehaviour
                 fx.Burst(fireType, transform.position + randomOffset, fm.windHorn.windSpeed, num);
                 fx.Burst(smokeType, transform.position + randomOffset, fm.windHorn.windSpeed, num);
             }
+            else
+                fx.Burst(smokeType, transform.position + randomOffset, fm.windHorn.windSpeed, 0);
             yield return new WaitForSeconds(updateTime);
         }
         yield return null;

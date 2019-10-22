@@ -105,6 +105,7 @@ Material:
     - _aclip: 0.5
     - _burnscale: 1
     - _emissive: 1
+    - _usealpha: 1
     - _vertex: 0
     - _wave: 0
     m_Colors:

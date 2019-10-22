@@ -1212,6 +1212,7 @@ MonoBehaviour:
   doorway: {fileID: 0}
   name: FireFighter
   outline: {fileID: 0}
+  namePlate: {fileID: 0}
   charaButton: {fileID: 0}
 --- !u!54 &5060681126114614699
 Rigidbody:
@@ -2971,7 +2972,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
+  m_SortingLayerID: 955514751
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!114 &1466381653187536008

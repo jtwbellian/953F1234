@@ -5,7 +5,7 @@ public class VRPointer : MonoBehaviour {
 
     private GameObject hand;
     private float maxDist = 100f;
-    private float teleportRange = 2.5f;
+    private float teleportRange = 4f;
     private VRButton lastButton;
 
     public GameObject primaryHand;
@@ -66,6 +66,7 @@ public class VRPointer : MonoBehaviour {
             var distToHit = Vector3.Distance(transform.position, hit.point);
             laser.transform.localScale = new Vector3(1f, 1f, distToHit);
 
+            // Position the cursor
             if (cursor.activeSelf)
             {
                 cursor.transform.position = hit.point;
@@ -73,25 +74,32 @@ public class VRPointer : MonoBehaviour {
                 Vector2 rotVector = OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick);
                 float angle = Mathf.Atan2(rotVector.x, rotVector.y);
             }
-            else
+            else    // activate cursor
             {
                 cursor.SetActive(true);
                 laser.SetActive(true);
             }
 
-            if (canTeleport && distToHit < teleportRange)
+            if (canTeleport)
             {
-                // Hit a teleportable surface
-                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Surface"))
+                if (distToHit < teleportRange)
                 {
-                    cursor.transform.localScale = largeScale;
-                    teleportField.SetActive(true);
-                    return;
+                    // Hit a teleportable surface
+                    if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Surface"))
+                    {
+                        cursor.transform.localScale = largeScale;
+                        teleportField.SetActive(true);
+                        return;
+                    }
+                    else
+                    {
+                        cursor.transform.localScale = smallScale;
+                        teleportField.SetActive(false);
+                    }
                 }
                 else
                 {
-                    cursor.transform.localScale = smallScale;
-                    teleportField.SetActive(false);
+                    HideCursor();
                 }
             }
 
@@ -125,16 +133,21 @@ public class VRPointer : MonoBehaviour {
                 lastButton = null;
             }
 
-            if (cursor.activeSelf)
-            {
-                cursor.SetActive(false);
-                laser.SetActive(false);
+            HideCursor();
+        }
+    }
 
-                if (canTeleport)
-                {
-                    teleportField.SetActive(false);
-                    cursor.transform.localScale = smallScale;
-                }
+    private void HideCursor()
+    {
+        if (cursor.activeSelf)
+        {
+            cursor.SetActive(false);
+            laser.SetActive(false);
+
+            if (canTeleport)
+            {
+                teleportField.SetActive(false);
+                cursor.transform.localScale = smallScale;
             }
         }
     }
@@ -182,6 +195,8 @@ public class VRPointer : MonoBehaviour {
 
         if (OVRInput.GetUp(rt))
         {
+            wait = 0f;
+
             //Debug.Log("Input recognized 1");
             if (hand == secondaryHand)
             {
@@ -195,14 +210,16 @@ public class VRPointer : MonoBehaviour {
                 if (lastButton)
                     lastButton.Click();
                 //else
-                if (teleportField.activeInHierarchy)
-                    Teleport();
+                if (teleportField)
+                    if (teleportField.activeInHierarchy)
+                        Teleport();
             }
-            wait = 0f;
         }
 
         if (OVRInput.GetUp(lt))
         {
+            wait = 0;
+
             //Debug.Log("Input recognized 2");
             if (hand == primaryHand)
             {
@@ -216,11 +233,11 @@ public class VRPointer : MonoBehaviour {
                 if (lastButton)
                     lastButton.Click();
                 //else
-                if (teleportField.activeInHierarchy)
-                    Teleport();
+                if (teleportField)
+                    if (teleportField.activeInHierarchy)
+                        Teleport();
             }
 
-            wait = 0;
         }
 
         UICircle.SetFillAmount(wait);

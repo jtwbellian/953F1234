@@ -59,6 +59,7 @@ public class ActSearch : DelegationAction
         fireFighter.controller.GoHome();
         fireFighter.charaButton.SetStatus(Status.door, "Standing By");
         stopAction(fireFighter.gameObject);
+        
     }
     
     /// <summary>

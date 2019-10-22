@@ -48,7 +48,7 @@ public class DelegationMenu : MonoBehaviour
                 transform.position = cam.position;
 
             // Rotate our transform a step closer to the target's.
-            transform.rotation = Quaternion.Slerp(transform.rotation, cam.rotation, Time.deltaTime * 2f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, cam.rotation, Time.deltaTime * 0.2f);
         }	
     }
 

@@ -92,6 +92,7 @@ namespace OVRTouchSample
 
         private void Update()
         {
+            
             if (!pv.IsMine)
                 return;
 
@@ -106,6 +107,7 @@ namespace OVRTouchSample
             CollisionEnable(collisionEnabled);
 
             UpdateAnimStates();
+            
         }
 
         // Just checking the state of the index and thumb cap touch sensors, but with a little bit of

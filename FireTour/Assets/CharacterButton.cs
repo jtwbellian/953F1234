@@ -56,9 +56,11 @@ public class CharacterButton : VRButton
             statusIcon.color = c_hidden;
             avatar.color = c_white;
             Debug.Log(gameObject.ToString() + " is now Standing By");
+            statusIcon.gameObject.SetActive(false);
             return;
         }
-
+        
+        statusIcon.gameObject.SetActive(true);
         statusIcon.sprite = icons[(int)status];
         statusIcon.color = c_white;
         avatar.color = c_busy;

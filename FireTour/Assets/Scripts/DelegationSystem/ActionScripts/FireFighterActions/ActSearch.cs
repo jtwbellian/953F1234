@@ -30,7 +30,6 @@ public class ActSearch : DelegationAction
             fireFighter.controller.SetDestination(fireFighter.assignedLocation.transform);
             fireFighter.controller.onDestinationArrived += BeginSearch;
             fireFighter.charaButton.SetStatus(Status.running, "Headed to " + targetLocation);
-
         }
         else
         {
@@ -40,15 +39,27 @@ public class ActSearch : DelegationAction
 
     public void BeginSearch()
     {
-        //var wall location = fireFighter.assignedLocation.GetComponent<DelegationLocation>();
-
-        if (fireFighter.inDoorway) // If in a doorway, open the door and enter
+        if (fireFighter.doorway) // If doorway not null, open the door and enter
         {
-            fireFighter.charaButton.SetStatus(Status.door, "Entering From " + targetLocation);
+            fireFighter.charaButton.SetStatus(Status.door, "Searching " + targetLocation + " [Inside]");
+            fireFighter.doorway.Open();
+            fireFighter.controller.SetDestination(fireFighter.doorway.entryPoint);
         }
-        // 
+        else
+        {
+            fireFighter.charaButton.SetStatus(Status.door, "Searching " + targetLocation + " [Outside]");
+            Invoke("EndSearch", fireFighter.timeToSearch);
+            fireFighter.controller.onDestinationArrived -= BeginSearch;
+        }
+    }
+    
 
-        fireFighter.controller.onDestinationArrived -= BeginSearch;
+    public void EndSearch()
+    {
+        fireFighter.controller.GoHome();
+        fireFighter.charaButton.SetStatus(Status.door, "Standing By");
+        stopAction(fireFighter.gameObject);
+        
     }
     
     /// <summary>

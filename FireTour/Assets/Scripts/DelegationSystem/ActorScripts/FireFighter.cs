@@ -1,17 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 [RequireComponent(typeof(FireFighterController))]
 public class FireFighter : DelegationActor
 {
     public FireFighterController controller;
     public float timeToSearch = 35;
-    public bool inDoorway = false;
+    public Door doorway = null;
     private SetHead headSetter;
     private string [] namesList = {"FireFighter", "Abel", "Bower", "Chen", "Davis", "Estrada", "Feldman", "Hewett", "Lewis", "Miller", "Nassar", "Sulivan", "Turner"};
     public string name = "FireFighter";
     public ToonLines outline;
+    public TextMeshProUGUI namePlate;
 
     public CharacterButton charaButton;
 
@@ -24,6 +26,8 @@ public class FireFighter : DelegationActor
         outline =  GetComponent<ToonLines>();
 
         charaButton = DelegationManager.Instance.menu.AddCharacter(this);
+        namePlate = GetComponentInChildren<TextMeshProUGUI>();
+        namePlate.text = name.ToUpper();
     }
 
     public void SetOutline(bool active)
@@ -46,11 +50,12 @@ public class FireFighter : DelegationActor
     private void OnTriggerEnter(Collider other) 
     {
         if (other.gameObject.tag == "Door")
-            inDoorway = true;
+            doorway = other.GetComponent<Door>(); 
     }
+
     private void OnTriggerExit(Collider other) 
     {
         if (other.gameObject.tag == "Door")
-            inDoorway = true;
+            doorway = null; 
     }
 }

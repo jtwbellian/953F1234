@@ -69,14 +69,17 @@ public class FireProbe : MonoBehaviour
      [ContextMenu("Light")]
     public void TurnOn()
     {
+        FireManager.litProbeCount ++;
         lit = true;
-        fm.AddProbe(this);
+        //fm.AddProbe(this);  //db the list is now being done at game start. Has been replaced by fm.GrowProbe(this)
+        fm.GrowProbe(this);
         StartCoroutine("Burn");
     }
      [ContextMenu("Extinguish")]
     public void TurnOff()
     {
         lit = false;
+        fm.ShrinkProbe(this); //RemoveProbe used to cover this, now it is handled independently.
         fm.RemoveProbe(this);
         StopCoroutine("Burn");
     }
@@ -153,6 +156,7 @@ public class FireProbe : MonoBehaviour
 
         if (!probe.lit)
         {
+            //FireManager.litProbeCount ++;
             probe.TurnOn();
         }
     }

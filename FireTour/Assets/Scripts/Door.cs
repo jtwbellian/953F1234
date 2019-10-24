@@ -80,14 +80,15 @@ public class Door : MonoBehaviour
     {
         animator.SetBool("Open", true);
         Door.doorsOpen++;
+        DoorIsOpen();
     }
     
     [ContextMenu("Close")]
     public void Close()
     {
         animator.SetBool("Open", false);
-
         Door.doorsOpen--;
+        DoorIsShut();
     }
 
     void OnTriggerEnter(Collider Other)

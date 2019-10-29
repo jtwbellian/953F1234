@@ -29,7 +29,7 @@ public class FireFighterController : MonoBehaviour
 
     public void CancelDestination()
     {
-        agent.Stop();
+        agent.isStopped = true;
     }
 
     public void GoHome()

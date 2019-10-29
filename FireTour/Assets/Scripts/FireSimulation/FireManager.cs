@@ -111,7 +111,10 @@ public class FireManager : MonoBehaviour
             mesh.SetColors(vertColorList);
             var psMain = distanceFire.main;
             litRatio = ((float)FireManager.litProbeCount/(float)probes.Count);
-            psMain.startSizeMultiplier = 4f + 6f*litRatio;
+            if (litRatio > 0.1f)
+                psMain.startSizeMultiplier = 4f + 6f*litRatio;
+            else 
+                psMain.startSizeMultiplier = 0;
             distanceFire.transform.position = new Vector3 (distanceFire.transform.position.x, 4.5f + 4f*litRatio, distanceFire.transform.position.z);
 
             yield return new WaitForSeconds(timeToDouble);

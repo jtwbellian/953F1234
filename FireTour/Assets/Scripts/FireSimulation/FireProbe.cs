@@ -112,7 +112,7 @@ public class FireProbe : MonoBehaviour
         {
             Debug.Log("VertexGroup returned NULL."); 
         }
-        if (shellList.Count > 0)
+        if (shellList != null && shellList.Count > 0)
         {        
             for (int i = 0; i < shellList.Count-1; ++i)
             {

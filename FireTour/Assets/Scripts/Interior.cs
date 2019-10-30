@@ -11,7 +11,7 @@ public class Interior : MonoBehaviour
 
     void OnTriggerEnter(Collider Other)
         {
-            if (Other.gameObject.transform.tag == "Player")
+            if (Other.gameObject.transform.tag == "Player" && Other.GetComponent<PhotonHead>() != null)
             {
                 if (playerIsInside == false)
                         playerIsInside = true;
@@ -23,7 +23,7 @@ public class Interior : MonoBehaviour
         }
     void OnTriggerExit(Collider Other)
         {
-            if (Other.gameObject.transform.tag == "Player")
+            if (Other.gameObject.transform.tag == "Player" && Other.GetComponent<PhotonHead>() != null)
             {
                 if (playerIsInside == true)
                         playerIsInside = false;

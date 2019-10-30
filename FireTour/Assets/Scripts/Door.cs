@@ -47,9 +47,9 @@ public class Door : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         // Only if the tag is player and is a spherecollider ( Not body Capsule )
-        if (other.tag == "Player" && other.GetType() == typeof(SphereCollider))
+        if (other.tag == "Player" && other.GetType() == typeof(CapsuleCollider))
         {
-            SphereCollider sphere = other as SphereCollider; 
+            //SphereCollider sphere = other as SphereCollider; 
 
             /* //Return if staying in outer trigger
             if (Vector3.Distance(other.transform.position, transform.TransformPoint(handleCollider.center)) > sphere.radius + handleCollider.radius)
@@ -60,7 +60,7 @@ public class Door : MonoBehaviour
 
             // otherwise hand must be over inner trigger
 
-            if (Input.GetKey(KeyCode.UpArrow) || OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTrackedRemote))
+            if (OVRInput.GetDown(OVRInput.RawButton.RHandTrigger) || OVRInput.GetDown(OVRInput.RawButton.LHandTrigger))
             {
                 if (doorIsOpen)
                 {

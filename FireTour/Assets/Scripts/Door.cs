@@ -8,9 +8,9 @@ public class Door : MonoBehaviour
     public static int doorsOpen = 0;
     private Animator animator;
 
-    private GameObject textMeshFront;
+    public GameObject textMeshFront;
 
-    private GameObject textMeshBack;
+    public GameObject textMeshBack;
 
     private string text; 
 
@@ -22,6 +22,7 @@ public class Door : MonoBehaviour
     public SphereCollider handleCollider;
     public GameObject hintUI;
     public Transform entryPoint;
+    public GameObject rootDoor;
 
     private bool doorIsOpen;
     private bool invertActivation = false;
@@ -35,9 +36,6 @@ public class Door : MonoBehaviour
 
     void SetDoorText(string text)
     {
-        textMeshFront = this.gameObject.transform.GetChild(0).GetChild(0).gameObject;
-        textMeshBack = this.gameObject.transform.GetChild(0).GetChild(1).gameObject;
-        
         TextMeshPro frontText = textMeshFront.GetComponent<TextMeshPro>();
         TextMeshPro backText = textMeshBack.GetComponent<TextMeshPro>();
 
@@ -49,19 +47,20 @@ public class Door : MonoBehaviour
     void OnTriggerStay(Collider other)
     {
         // Only if the tag is player and is a spherecollider ( Not body Capsule )
-        if (other.tag == "Player" && other.GetType() == typeof(SphereCollider))
+        if (other.tag == "Player" && other.GetType() == typeof(CapsuleCollider))
         {
-            SphereCollider sphere = other as SphereCollider; 
+            //SphereCollider sphere = other as SphereCollider; 
 
-            // Return if staying in outer trigger
+            /* //Return if staying in outer trigger
             if (Vector3.Distance(other.transform.position, transform.TransformPoint(handleCollider.center)) > sphere.radius + handleCollider.radius)
             {
                 return;
             }
+            */
 
             // otherwise hand must be over inner trigger
 
-            if (Input.GetKey(KeyCode.UpArrow) || OVRInput.GetDown(OVRInput.Button.PrimaryHandTrigger, OVRInput.Controller.RTrackedRemote))
+            if (OVRInput.GetDown(OVRInput.RawButton.RHandTrigger) || OVRInput.GetDown(OVRInput.RawButton.LHandTrigger))
             {
                 if (doorIsOpen)
                 {
@@ -78,16 +77,15 @@ public class Door : MonoBehaviour
     [ContextMenu("Open")]
     public void Open()
     {
-        animator.SetBool("Open", true);
-        Door.doorsOpen++;
+        DoorIsOpen();
+        rootDoor.GetComponent<Animator>().SetBool("Open", true);
     }
     
     [ContextMenu("Close")]
     public void Close()
     {
-        animator.SetBool("Open", false);
-
-        Door.doorsOpen--;
+        DoorIsShut();
+        rootDoor.GetComponent<Animator>().SetBool("Open", false);
     }
 
     void OnTriggerEnter(Collider Other)
@@ -157,34 +155,37 @@ public class Door : MonoBehaviour
 
     public void DoorIsShut()
     {
+        Door.doorsOpen --;
         SetDoorText("Squeeze Grip to Open Door");
         doorIsOpen = false;
-
-        if (Door.doorsOpen > 0)
-            return; 
-
-        if (interiorBoundary.playerIsInside == true)
+        if (Door.doorsOpen == 0)
         {
-            if (!GetInteriorState())
-                SetInteriorState(true);
+            if (interiorBoundary.playerIsInside == true)
+            {
+                if (!GetInteriorState())
+                    SetInteriorState(true);
 
-            if (GetExteriorState())
-                SetExteriorState(false);
-        }
-        else
-        {
-            if (GetInteriorState())
-                SetInteriorState(false);
+                if (GetExteriorState())
+                    SetExteriorState(false);
+            }
+            else
+            {
+                if (GetInteriorState())
+                    SetInteriorState(false);
 
-            if (!GetExteriorState())
-                SetExteriorState(true);
+                if (!GetExteriorState())
+                    SetExteriorState(true);
+            }
         }
+        
     }
+
+
     public void DoorIsOpen()
     {
+        Door.doorsOpen ++;
         SetDoorText("Squeeze Grip to Close Door");
         doorIsOpen = true;
-
         if (!GetInteriorState())
             SetInteriorState(true);
 

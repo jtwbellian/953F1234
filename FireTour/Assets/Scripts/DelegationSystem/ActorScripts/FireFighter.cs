@@ -50,7 +50,10 @@ public class FireFighter : DelegationActor
     private void OnTriggerEnter(Collider other) 
     {
         if (other.gameObject.tag == "Door")
-            doorway = other.GetComponentInChildren<Door>(); 
+            {
+                doorway = other.GetComponentInChildren<Door>(); 
+                doorway.Open();
+            }
     }
 
     private void OnTriggerExit(Collider other) 

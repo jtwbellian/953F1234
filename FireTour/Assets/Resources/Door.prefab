@@ -252,8 +252,8 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.12088543
+  m_Center: {x: -0.020885438, y: 0, z: 1.9870364e-12}
 --- !u!114 &5955102587611748100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -266,12 +266,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b72ac0d9d424d66489b69f8044a0ce1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textMeshFront: {fileID: 0}
+  textMeshBack: {fileID: 0}
   interior: []
   exterior: []
   interiorBoundary: {fileID: 0}
   handleCollider: {fileID: 4845270324898129022}
   hintUI: {fileID: 3828776914416626874}
   entryPoint: {fileID: 570229822398776991}
+  rootDoor: {fileID: 0}
 --- !u!1 &4623990476616158255
 GameObject:
   m_ObjectHideFlags: 0
@@ -284,7 +287,6 @@ GameObject:
   - component: {fileID: 804993905138795530}
   - component: {fileID: 6347648690813729011}
   - component: {fileID: 3677852928132093219}
-  - component: {fileID: 841108318493627600}
   - component: {fileID: 3773949881383210642}
   m_Layer: 15
   m_Name: Door
@@ -374,21 +376,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &841108318493627600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4623990476616158255}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4875cc0457e47f742a31b25fda868f03, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 3828776914416626874}
-  invertActivation: 0
-  persistAfterDeparture: 0
 --- !u!135 &3773949881383210642
 SphereCollider:
   m_ObjectHideFlags: 0

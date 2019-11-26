@@ -18,6 +18,12 @@ public class FireManager : MonoBehaviour
 
     private List<Color32> vertColorList;
 
+    public ParticleSystem distanceFire;
+
+    public static int litProbeCount;
+
+    public float litRatio;
+
 
     ////////////////////////////////////////////
     public GameObject testPoint = null;
@@ -63,22 +69,32 @@ public class FireManager : MonoBehaviour
             vertColorList.Add(Color.white);
         Catalog();
         StartCoroutine("SpreadFire");
+        FireManager.litProbeCount = 0;
     }
 
     public void AddProbe(FireProbe p)
     {
-        probeUpdate += p.Grow;
+        //probeUpdate += p.Grow; //db this is now done by GrowProbe()
         probes.Add(p);
+    }
+    public void GrowProbe(FireProbe p)
+    {
+        probeUpdate += p.Grow;
+    }
+        public void ShrinkProbe(FireProbe p)
+    {
+        probeUpdate -= p.Grow;
     }
 
     public void RemoveProbe(FireProbe p)
     {
-        probeUpdate -= p.Grow;
+        //probeUpdate -= p.Grow; //db this is now done by ShrinkProbe()
         probes.Remove(p);
     }
      [ContextMenu("Put Out")]
     public void PutOut()
     {
+        FireManager.litProbeCount = 0;
         foreach( FireProbe f in probes)
         {
             f.TurnOff();
@@ -93,6 +109,13 @@ public class FireManager : MonoBehaviour
                 probeUpdate.Invoke();
 
             mesh.SetColors(vertColorList);
+            var psMain = distanceFire.main;
+            litRatio = ((float)FireManager.litProbeCount/(float)probes.Count);
+            if (litRatio > 0.1f)
+                psMain.startSizeMultiplier = 4f + 6f*litRatio;
+            else 
+                psMain.startSizeMultiplier = 0;
+            distanceFire.transform.position = new Vector3 (distanceFire.transform.position.x, 4.5f + 4f*litRatio, distanceFire.transform.position.z);
 
             yield return new WaitForSeconds(timeToDouble);
         }

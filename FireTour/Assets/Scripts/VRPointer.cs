@@ -30,11 +30,18 @@ public class VRPointer : MonoBehaviour {
 
     private Vector3 smallScale = new Vector3(0.125f, 0.125f, 0.125f);
     private Vector3 largeScale = new Vector3(0.5f, 0.5f, 0.5f);
+
+    [SerializeField]
+    Transform leftHandAnchor;
+    [SerializeField]
+    Transform rightHandAnchor;
     
     // Use this for initialization
     void Start () 
     {
         cursor = Instantiate(cursor);
+        cursor.SetActive(false);
+
         UICircle = cursor.GetComponentInChildren<UICircleFill>();
 
         if (canTeleport)
@@ -48,21 +55,33 @@ public class VRPointer : MonoBehaviour {
 
         laser.SetActive(false);
         hand = primaryHand;
+        Debug.Log(hand);
+
         character = playerTransform.GetComponent<CharacterController>();
         headTransform = Camera.main.transform;
+
+        //Invoke("FixTransforms", 1f);
     }
-    
+
     // Update is called once per frame
     void Update () 
     {
+        /*
+        primaryHand.transform.position = rightHandAnchor.transform.position;
+        secondaryHand.transform.position = leftHandAnchor.transform.position;
+        primaryHand.transform.rotation = rightHandAnchor.transform.rotation;
+        secondaryHand.transform.rotation = leftHandAnchor.transform.rotation;
+        */
         CheckControllerInput();
         
         RaycastHit hit;
         var layerMask = LayerMask.GetMask("UI", "Surface");
 
-        // Does the ray intersect any objects excluding the player layer
+        // Does the ray intersect any objects on UI or Surface layer
         if (Physics.Raycast(hand.transform.position, hand.transform.TransformDirection(Vector3.forward), out hit, canTeleport?teleportRange:maxDist, layerMask))
         {
+            Debug.DrawRay(hand.transform.position, hand.transform.TransformDirection(Vector3.forward) * maxDist, Color.white);
+
             var distToHit = Vector3.Distance(transform.position, hit.point);
             laser.transform.localScale = new Vector3(1f, 1f, distToHit);
 
@@ -163,13 +182,17 @@ public class VRPointer : MonoBehaviour {
         var rt = OVRInput.RawButton.RIndexTrigger;
         var lt = OVRInput.RawButton.LIndexTrigger;
 
+
+        bool faceButtonDown = (OVRInput.Get(b2) || OVRInput.Get(b1) || 
+                              OVRInput.Get(b4) || OVRInput.Get(b3)) ? true : false;
+                  
         bool anyButtonDown = ((hand == primaryHand && (OVRInput.Get(b2) || OVRInput.Get(b1) || OVRInput.Get(rt))) || 
                               (hand == secondaryHand && (OVRInput.Get(b4) || OVRInput.Get(b3) || OVRInput.Get(lt)))) ? true : false;
                               
         bool triggerDown = ((hand == primaryHand && OVRInput.Get(rt)) || 
                               (hand == secondaryHand && OVRInput.Get(lt))) ? true : false;
 
-        if (anyButtonDown)
+        if (faceButtonDown)
         {
             if (DelegationManager.Instance)
             {

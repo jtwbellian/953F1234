@@ -810,7 +810,7 @@ GameObject:
   - component: {fileID: 4121800579678795644}
   - component: {fileID: 7928893866148399716}
   - component: {fileID: 8396106390279718076}
-  - component: {fileID: 3394198771275464161}
+  - component: {fileID: 172474413682742950}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -825,16 +825,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2258209110462714816}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -521}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -8.999878}
   m_LocalScale: {x: 1.7815989, y: 1.7815989, z: 1.7815989}
   m_Children: []
-  m_Father: {fileID: 5547596758918213462}
+  m_Father: {fileID: 5547596760198742963}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -3714, y: 889}
+  m_AnchoredPosition: {x: -1645.0002, y: 889}
   m_SizeDelta: {x: 512, y: 512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4121800579678795644
@@ -1000,8 +1000,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   hover: 0
---- !u!135 &3394198771275464161
-SphereCollider:
+--- !u!65 &172474413682742950
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -1011,8 +1011,8 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 75
-  m_Center: {x: 0, y: -10.55, z: 0}
+  m_Size: {x: 200, y: 200, z: 5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2528827612633981409
 GameObject:
   m_ObjectHideFlags: 0
@@ -2058,7 +2058,6 @@ RectTransform:
   m_Children:
   - {fileID: 5547596760198742963}
   - {fileID: 5547596759054052233}
-  - {fileID: 108838395016772584}
   m_Father: {fileID: 5547596760177598071}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2320,6 +2319,7 @@ RectTransform:
   m_Children:
   - {fileID: 2917290490918038993}
   - {fileID: 5485724088168375941}
+  - {fileID: 108838395016772584}
   m_Father: {fileID: 5547596758918213462}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

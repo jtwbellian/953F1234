@@ -48,8 +48,11 @@ public class DelegationMenu : MonoBehaviour
                 transform.position = cam.position;
 
             // Rotate our transform a step closer to the target's.
-            if (Quaternion.Angle(transform.rotation, cam.rotation) > 90f)
-                transform.rotation = Quaternion.Slerp(transform.rotation, cam.rotation, Time.deltaTime * 0.2f);
+            if (Quaternion.Angle(transform.rotation, cam.rotation) > 30f)
+            {
+                var newRot = Quaternion.Slerp(transform.rotation, cam.rotation, Time.deltaTime * 0.2f);
+                transform.rotation = Quaternion.Euler(0f, newRot.eulerAngles.y, 0f);
+            } 
         }	
     }
 

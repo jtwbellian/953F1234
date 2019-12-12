@@ -63,11 +63,11 @@ public class PhotonPlayer : MonoBehaviour
             //grabberL.SetParentTransform(player.transform);
             //grabberR.SetParentTransform(player.transform);
 
-            handR.transform.SetParent(avController.headTarget.parent);
+            handR.transform.SetParent(avController.rhandTarget.parent);
             handR.transform.localPosition = Vector3.zero;
             handR.transform.localRotation = Quaternion.identity;
 
-            handL.transform.SetParent(avController.headTarget.parent);
+            handL.transform.SetParent(avController.lhandTarget.parent);
             handL.transform.localPosition = Vector3.zero;
             handL.transform.localRotation = Quaternion.identity;
 
